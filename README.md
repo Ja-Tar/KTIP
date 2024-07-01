@@ -11,6 +11,8 @@ Strona do generowania ekranu tablic informacji pasażerskiej
 - [ ] Informacja o przewoźniku
 - [ ] Informacja o końcu biegu pociągu (pociąg kończy bieg)
 - [ ] Godzina przyjazdu (pociąg kończy bieg)
+- [ ] Godzina odjazdu
+- [ ] Angielska wersja strony
 
 # EN 🇬🇧
 A website for generating passenger information display screens
@@ -20,10 +22,12 @@ A website for generating passenger information display screens
 - [ ] Train delay
 - [ ] Information bar
 - [ ] Selection of the final / starting station (train terminates)
-- [ ] Intermediate stations
+- [ ] Via stations
 - [ ] Train number
 - [ ] Carrier information
 - [ ] End of train run information (train terminates)
 - [ ] Arrival time (train terminates)
+- [ ] Departure time
+- [ ] English version of the page
 
 ## < WORK IN PROGRESS > 

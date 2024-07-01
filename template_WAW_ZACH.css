@@ -1,0 +1,39 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background-color: #283c65;
+}
+
+#display {
+    right: 0;
+    left: 0;
+}
+
+#time {
+    font-weight: bolder;
+    font-size: 400%;
+}
+
+.row {
+    display: flex;
+    align-items: top;
+    margin-top: 5px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+ul {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.label {
+    font-style: italic;
+}
+
+#train_number {
+    font-size: 250%;
+}

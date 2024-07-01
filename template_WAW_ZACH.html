@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyświetlacz / Display</title>
+    <link rel="stylesheet" href="template_WAW_ZACH.css">
+</head>
+
+<body>
+    <div id="display_box">
+        <li id="display">
+            <ul id="1row" class="row">
+                <div id="time">08:23</div>
+                <div id="delay_box" style="display: none;">
+                    <div class="label">Opóźniony / Delayed:</div>
+                    <div id="delay"></div> <!-- TODO -->
+                </div>
+                <div id="train_number_box">
+                    <div class="label">Numer / Number:</div>
+                    <div id="train_number">R1 91961</div>
+                </div>
+                <div id="buffer"></div>
+            </ul>
+            <ul id="2row" class="row">
+                <div id="destination" class="scroling">Warszawa Wschodnia</div>
+            </ul>
+            <ul id="3row" class="row">
+                <div id="via_stations_box">
+                    <div class="label">Stacje pośrednie / Via stations:</div>
+                    <div id="via_stations" class="scroling">Warszawa Ochota, Warszawa Śródmieście, Warszawa .......,
+                        Warszawa ..........</div>
+                </div>
+            </ul>
+            <ul id="4row" class="row">
+                <div id="operator_box">
+                    <div class="label">Przewoźnik / Operator:</div>
+                    <div id="operator">Koleje Mazotakie</div>
+                </div>
+            </ul>
+            <ul id="info_bar" class="scroling row"></ul>
+        </li>
+    </div>
+    <!-- The ids are used for replacing the template value -->
+</body>
+
+</html>
