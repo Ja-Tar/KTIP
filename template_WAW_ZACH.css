@@ -4,12 +4,19 @@ body {
     font-size: 16px;
     margin: 0;
     padding: 0;
-    background-color: #283c65;
+}
+
+#display_box {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: #07080c;
 }
 
 #display {
-    right: 0;
-    left: 0;
+    width: 700px;
+    height: 400px;
+    background-color: #283c65;
 }
 
 #time {

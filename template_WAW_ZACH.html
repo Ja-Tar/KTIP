@@ -9,6 +9,18 @@
 </head>
 
 <body>
+    <script>
+        window.addEventListener('resize', scaleDisplay);
+        document.addEventListener('DOMContentLoaded', scaleDisplay);
+        
+        function scaleDisplay() {
+            var display = document.getElementById('display');
+            var scaleFactor = window.innerWidth / 700; 
+        
+            display.style.transform = 'scale(' + scaleFactor + ')';
+            display.style.transformOrigin = 'top left';
+        }
+    </script>
     <div id="display_box">
         <li id="display">
             <ul id="1row" class="row">
