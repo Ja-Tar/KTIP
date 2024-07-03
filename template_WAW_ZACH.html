@@ -19,6 +19,7 @@
         
             display.style.transform = 'scale(' + scaleFactor + ')';
             display.style.transformOrigin = 'top left';
+            document.documentElement.style.setProperty("--scaleFactor", scaleFactor);
         }
     </script>
     <div id="display_box">
