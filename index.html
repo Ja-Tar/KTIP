@@ -11,7 +11,27 @@
     <body>
         <h1>KTIP - Kreator Tablic Informacji Pasażerskiej</h1>
 
-        
+        <form>
+            <label for="time">Czas:</label>
+            <input type="time" id="time" name="time" required>
+            <br>
+            <label for="train_number">Numer pociągu:</label>
+            <input type="text" id="train_number" name="train_number" required>
+            <br>
+            <label for="destination">Stacja docelowa:</label>
+            <input type="text" id="destination" name="destination" required>
+            <br>
+            <label for="via_stations">Stacje pośrednie:</label>
+            <input type="text" id="via_stations" name="via_stations" required>
+            <br>
+            <label for="operator">Przewoźnik:</label>
+            <input type="text" id="operator" name="operator" required>
+            <br>
+            <label for="info_bar">Pasek informacyjny:</label>
+            <input type="text" id="info_bar" name="info_bar" required>
+            <br>
+            <input type="submit" value="Generuj">
+        </form>
         
         <script src="index_script.js" async defer></script>
     </body>
