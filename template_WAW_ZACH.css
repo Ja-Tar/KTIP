@@ -21,7 +21,7 @@ body {
 
 #time {
     font-weight: bolder;
-    font-size: 400%;
+    font-size: 420%;
 }
 
 .row {
@@ -41,6 +41,12 @@ ul {
     font-style: italic;
 }
 
+#train_number_box {
+    margin-right: 10%;
+}
+
 #train_number {
-    font-size: 250%;
+    position: absolute;
+    font-size: 190%;
+    transform: translate(-2%, -20%);
 }
