@@ -14,7 +14,7 @@ body {
 
 #display {
     width: 700px;
-    height: 400px;
+    height: 360px;
     background-color: #283c65;
 }
 
@@ -26,14 +26,15 @@ body {
 .row {
     display: flex;
     align-items: top;
-    margin-top: 5px;
+    margin-top: 0px;
+    margin-bottom: 10px;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
 ul {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .label {
@@ -42,6 +43,7 @@ ul {
 
 #train_number_box {
     margin-right: 10%;
+    margin-top: 5px;
 }
 
 #train_number {
@@ -50,9 +52,9 @@ ul {
     transform: translate(-2%, -20%);
 }
 
-#row2 {
-    padding-left: 0;
-    padding-right: 0;
+#row1, #row4, #via_stations_box .label {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 #destination {
@@ -60,6 +62,31 @@ ul {
     font-weight: bolder;
     white-space: nowrap;
     overflow: hidden;
+    animation-duration: 16s;
+}
+
+#via_stations {
+    font-size: 180%;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translate(0%, -15%);
+}
+
+#operator {
+    font-size: 160%;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translate(0%, -15%);
+}
+
+#row4 {
+    margin-bottom: 0px;
+}
+
+#info_bar {
+    display: block;
+    width: 100%;
+    background-color: #212836;
 }
 
 /* Scroll text */
@@ -69,6 +96,8 @@ ul {
     white-space: nowrap;
     overflow: hidden;
     position: relative;
+    --scroll-animation-delay: 8s; /* Used by creation script to create delay between texts */
+    --scroll-animation-duration: 16s; /* Used by the creation script to set a constant speed */
 }
 
 .scroll::after, .scroll::before {
@@ -79,11 +108,11 @@ ul {
     overflow: hidden;
     top: 0;
     left: 0;
-    animation: scroll-text 18s linear infinite;
+    animation: scroll-text var(--scroll-animation-duration) linear infinite; 
 }
 
 .scroll::before {
-    animation-delay: 9s;
+    animation-delay: var(--scroll-animation-delay); 
 }
 
 @keyframes scroll-text {
@@ -92,7 +121,7 @@ ul {
         color: white;
     }
     100% {
-        transform: translateX(-110%); /* 110% potrzebne do zrobienia odstępów pomiędzy tekstami */
+        transform: translateX(-110%); 
         color: white;
     }
 }
