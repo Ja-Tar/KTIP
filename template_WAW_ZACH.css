@@ -10,7 +10,6 @@ body {
     display: flex;
     width: 100vw;
     height: 100vh;
-    background-color: #07080c;
 }
 
 #display {
@@ -49,4 +48,12 @@ ul {
     position: absolute;
     font-size: 190%;
     transform: translate(-2%, -20%);
+}
+
+#destination {
+    font-size: 420%;
+    font-weight: bolder;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
