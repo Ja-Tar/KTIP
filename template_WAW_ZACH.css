@@ -50,12 +50,19 @@ ul {
     transform: translate(-2%, -20%);
 }
 
+#row2 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 #destination {
     font-size: 420%;
     font-weight: bolder;
     white-space: nowrap;
     overflow: hidden;
 }
+
+/* Scroll text */
 
 .scroll {
     color: transparent;
@@ -64,22 +71,28 @@ ul {
     position: relative;
 }
 
-.scroll::after {
+.scroll::after, .scroll::before {
     content: attr(data-scroll-text);
-    color: white;
+    color: transparent;
     position: absolute;
     white-space: nowrap;
     overflow: hidden;
     top: 0;
     left: 0;
-    animation: scroll-text 18s linear infinite; 
+    animation: scroll-text 18s linear infinite;
+}
+
+.scroll::before {
+    animation-delay: 9s;
 }
 
 @keyframes scroll-text {
     0%{
-        transform: translateX(100%); 
+        transform: translateX(110%); 
+        color: white;
     }
     100% {
-        transform: translateX(-100%); 
+        transform: translateX(-110%); /* 110% potrzebne do zrobienia odstępów pomiędzy tekstami */
+        color: white;
     }
 }
