@@ -10,6 +10,7 @@ body {
     display: flex;
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
 }
 
 #display {
@@ -79,14 +80,22 @@ ul {
     transform: translate(0%, -15%);
 }
 
-#row4 {
+#row1, #row4 {
     margin-bottom: 0px;
 }
 
-#info_bar {
-    display: block;
+#info_bar_box {
     width: 100%;
-    background-color: #212836;
+    height: 38px;
+    margin: 0;
+    background-color: #2f353d;
+}
+
+#info_bar {
+    font-size: 160%;
+    width: 100%;
+    font-weight: bolder;
+    font-style: italic;
 }
 
 /* Scroll text */
