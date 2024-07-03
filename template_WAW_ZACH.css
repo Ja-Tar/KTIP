@@ -55,5 +55,31 @@ ul {
     font-weight: bolder;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+}
+
+.scroll {
+    color: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+
+.scroll::after {
+    content: attr(data-scroll-text);
+    color: white;
+    position: absolute;
+    white-space: nowrap;
+    overflow: hidden;
+    top: 0;
+    left: 0; /* Zmieniamy na 0, aby tekst zaczynał się dokładnie od prawej krawędzi kontenera */
+    animation: scroll-text 20s linear infinite; /* Możesz dostosować czas trwania dla płynniejszego przewijania */
+}
+
+@keyframes scroll-text {
+    0% {
+        transform: translateX(100vw); /* Startuje z prawej strony ekranu */
+    }
+    100% {
+        transform: translateX(-100%); /* Kończy po lewej stronie ekranu, pozwalając na całkowite wyjście tekstu */
+    }
 }
