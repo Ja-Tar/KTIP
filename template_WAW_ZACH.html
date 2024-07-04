@@ -11,7 +11,11 @@
 <body>
     <script>
         window.addEventListener('resize', scaleDisplay);
-        document.addEventListener('DOMContentLoaded', scaleDisplay);
+        document.addEventListener('DOMContentLoaded', function() {
+            scaleDisplay();
+            replaceTemplateValues();
+            scrollText();
+        });
         
         function scaleDisplay() {
             var display = document.getElementById('display');
@@ -30,6 +34,11 @@
             var infoBar = document.getElementById('info_bar');
 
             var urlParams = new URLSearchParams(window.location.search);
+
+            if (!urlParams.has('time') || !urlParams.has('train_number') || !urlParams.has('destination') || !urlParams.has('via_stations') || !urlParams.has('operator') || !urlParams.has('info_bar')) {
+                return;
+            }
+
             time.innerHTML = urlParams.get('time');
             trainNumber.innerHTML = urlParams.get('train_number');
             destination.innerHTML = urlParams.get('destination');
@@ -44,7 +53,15 @@
                 var scrollElement = scrollElements[i];
                 var scrollText = scrollElement.getAttribute('data-scroll-text');
                 scrollElement.innerHTML = scrollText;
-                
+                let scroll_animation_duration = scrollText.length;
+                if (scrollElement.id == 'via_stations') {
+                    scroll_animation_duration = scrollText.length / 3.8;
+                } else if (scrollElement.id == 'info_bar') {
+                    scroll_animation_duration = scrollText.length / 3.1;
+
+                }
+                scrollElement.style.setProperty('--scroll-animation-duration', scroll_animation_duration + 's');
+                scrollElement.style.setProperty('--scroll-animation-delay', (scroll_animation_duration / 2) + 's'); 
             }
         }
     </script>
