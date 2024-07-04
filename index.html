@@ -11,7 +11,7 @@
     <body>
         <h1>KTIP - Kreator Tablic Informacji Pasażerskiej</h1>
 
-        <form>
+        <div id="form">
             <label for="time">Czas:</label>
             <input type="time" id="input_time" name="time" required>
             <br>
@@ -31,10 +31,10 @@
             <input type="text" id="input_info_bar" name="info_bar" required>
             <br>
             <button id="button_submit">Generuj</button>
-        </form><br>
+        </div><br>
 
         <div id="template_box">
-            <iframe id="template" src="template_WAW_ZACH.html" style="width:600px ; height: 306px;">
+            <iframe id="template_iframe" style="width:600px ; height: 306px;">
 
             </iframe><br><br>
             <button id="button_new_tab">Otwórz w nowej karcie</button>

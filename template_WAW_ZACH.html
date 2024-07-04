@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
@@ -11,16 +11,16 @@
 <body>
     <script>
         window.addEventListener('resize', scaleDisplay);
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             scaleDisplay();
             replaceTemplateValues();
             scrollText();
         });
-        
+
         function scaleDisplay() {
             var display = document.getElementById('display');
-            var scaleFactor = window.innerWidth / 700; 
-        
+            var scaleFactor = window.innerWidth / 700;
+
             display.style.transform = 'scale(' + scaleFactor + ')';
             display.style.transformOrigin = 'top left';
         }
@@ -42,9 +42,17 @@
             time.innerHTML = urlParams.get('time');
             trainNumber.innerHTML = urlParams.get('train_number');
             destination.innerHTML = urlParams.get('destination');
+            destination.setAttribute('data-scroll-text', urlParams.get('destination'));
             viaStations.innerHTML = urlParams.get('via_stations');
+            viaStations.setAttribute('data-scroll-text', urlParams.get('via_stations'));
             operator.innerHTML = urlParams.get('operator');
-            infoBar.innerHTML = urlParams.get('info_bar');
+
+            if (urlParams.has('info_bar') && urlParams.get('info_bar') != '') { 
+                infoBar.innerHTML = urlParams.get('info_bar');
+                infoBar.setAttribute('data-scroll-text', urlParams.get('info_bar'));
+            } else {
+                infoBar.parentElement.style.display = "none"
+            }
         }
 
         function scrollText() {
@@ -52,51 +60,62 @@
             for (var i = 0; i < scrollElements.length; i++) {
                 var scrollElement = scrollElements[i];
                 var scrollText = scrollElement.getAttribute('data-scroll-text');
-                scrollElement.innerHTML = scrollText;
-                let scroll_animation_duration = scrollText.length;
+                let scroll_animation_duration;
                 if (scrollElement.id == 'via_stations') {
+                    if (scrollText.length >= 42) {
+                        scrollElement.setAttribute("class", 'scrolling');
+                        continue;
+                    } 
                     scroll_animation_duration = scrollText.length / 3.8;
                 } else if (scrollElement.id == 'info_bar') {
                     scroll_animation_duration = scrollText.length / 3.1;
-
+                    if (scrollText.length >= 47) {
+                        scrollElement.setAttribute("class", 'scrolling');
+                        continue;
+                    } 
+                } else {
+                    if (scrollText.length >= 18) {
+                        scrollElement.setAttribute("class", 'scrolling');
+                        continue;
+                    } 
+                    scroll_animation_duration = scrollText.length;
                 }
+                scrollElement.innerHTML = scrollText;
                 scrollElement.style.setProperty('--scroll-animation-duration', scroll_animation_duration + 's');
-                scrollElement.style.setProperty('--scroll-animation-delay', (scroll_animation_duration / 2) + 's'); 
+                scrollElement.style.setProperty('--scroll-animation-delay', (scroll_animation_duration / 2) + 's');
             }
         }
     </script>
     <div id="display_box">
         <li id="display">
             <ul id="row1" class="row">
-                <div id="time">08:23</div>
+                <div id="time">00:00</div>
                 <div id="delay_box" style="display: none;">
                     <div class="label">Opóźniony / Delayed:</div>
                     <div id="delay"></div> <!-- TODO -->
                 </div>
                 <div id="train_number_box">
                     <div class="label">Numer / Number:</div>
-                    <div id="train_number">R1 91961</div>
+                    <div id="train_number">{TRAIN_NUMBER}</div>
                 </div>
             </ul>
             <ul id="row2" class="row">
-                <div id="destination" class="scroll" data-scroll-text="Warszawa Wschodnia">Warszawa Wschodnia</div>
+                <div id="destination" class="scroll">{DESTINATION}</div>
             </ul>
             <ul id="row3" class="row">
                 <div id="via_stations_box">
                     <div class="label">Stacje pośrednie / Via stations:</div>
-                    <div id="via_stations" class="scroll" data-scroll-text="Warszawa Ochota, Warszawa Śródmieście, Warszawa .......,
-                    Warszawa ..........">Warszawa Ochota, Warszawa Śródmieście, Warszawa .......,
-                        Warszawa ..........</div>
+                    <div id="via_stations" class="scroll">{VIA_STATIONS}</div>
                 </div>
             </ul>
             <ul id="row4" class="row">
                 <div id="operator_box">
                     <div class="label">Przewoźnik / Operator:</div>
-                    <div id="operator">Koleje Mazotakie</div>
+                    <div id="operator">{OPERATOR}</div>
                 </div>
             </ul>
             <ul id="info_bar_box" class="row">
-                <div id="info_bar" class="scroll" data-scroll-text="Uwaga na stacji trwają testy systemu informacji pasażerskiej ***">Uwaga na stacji trwają testy systemu informacji pasażerskiej ***</div>
+                <div id="info_bar" class="scroll">{INFO_BAR}</div>
             </ul>
         </li>
     </div>

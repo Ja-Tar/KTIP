@@ -7,7 +7,6 @@ body {
 }
 
 #display_box {
-    display: flex;
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
@@ -53,7 +52,7 @@ ul {
     transform: translate(-2%, -20%);
 }
 
-#row1, #row4, #via_stations_box .label {
+.row {
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -100,16 +99,18 @@ ul {
 
 /* Scroll text */
 
-.scroll {
+.scrolling {
     color: transparent;
     white-space: nowrap;
     overflow: hidden;
     position: relative;
     --scroll-animation-delay: 8s; /* Used by creation script to create delay between texts */
     --scroll-animation-duration: 16s; /* Used by the creation script to set a constant speed */
+    padding-left: -5px;
+    padding-right: -5px;
 }
 
-.scroll::after, .scroll::before {
+.scrolling::after, .scrolling::before {
     content: attr(data-scroll-text);
     color: transparent;
     position: absolute;
@@ -120,7 +121,7 @@ ul {
     animation: scroll-text var(--scroll-animation-duration) linear infinite; 
 }
 
-.scroll::before {
+.scrolling::before {
     animation-delay: var(--scroll-animation-delay); 
 }
 
