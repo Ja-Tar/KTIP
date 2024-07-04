@@ -20,6 +20,33 @@
             display.style.transform = 'scale(' + scaleFactor + ')';
             display.style.transformOrigin = 'top left';
         }
+
+        function replaceTemplateValues() {
+            var time = document.getElementById('time');
+            var trainNumber = document.getElementById('train_number');
+            var destination = document.getElementById('destination');
+            var viaStations = document.getElementById('via_stations');
+            var operator = document.getElementById('operator');
+            var infoBar = document.getElementById('info_bar');
+
+            var urlParams = new URLSearchParams(window.location.search);
+            time.innerHTML = urlParams.get('time');
+            trainNumber.innerHTML = urlParams.get('train_number');
+            destination.innerHTML = urlParams.get('destination');
+            viaStations.innerHTML = urlParams.get('via_stations');
+            operator.innerHTML = urlParams.get('operator');
+            infoBar.innerHTML = urlParams.get('info_bar');
+        }
+
+        function scrollText() {
+            var scrollElements = document.getElementsByClassName('scroll');
+            for (var i = 0; i < scrollElements.length; i++) {
+                var scrollElement = scrollElements[i];
+                var scrollText = scrollElement.getAttribute('data-scroll-text');
+                scrollElement.innerHTML = scrollText;
+                
+            }
+        }
     </script>
     <div id="display_box">
         <li id="display">
