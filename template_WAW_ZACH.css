@@ -57,13 +57,6 @@ ul {
     padding-right: 5px;
 }
 
-#destination {
-    font-size: 420%;
-    font-weight: bolder;
-    white-space: nowrap;
-    overflow: hidden;
-    animation-duration: 16s;
-}
 
 #via_stations {
     font-size: 180%;
@@ -95,43 +88,4 @@ ul {
     width: 100%;
     font-weight: bolder;
     font-style: italic;
-}
-
-/* Scroll text */
-
-.scrolling {
-    color: transparent;
-    white-space: nowrap;
-    overflow: hidden;
-    position: relative;
-    --scroll-animation-delay: 8s; /* Used by creation script to create delay between texts */
-    --scroll-animation-duration: 16s; /* Used by the creation script to set a constant speed */
-    padding-left: -5px;
-    padding-right: -5px;
-}
-
-.scrolling::after, .scrolling::before {
-    content: attr(data-scroll-text);
-    color: transparent;
-    position: absolute;
-    white-space: nowrap;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    animation: scroll-text var(--scroll-animation-duration) linear infinite; 
-}
-
-.scrolling::before {
-    animation-delay: var(--scroll-animation-delay); 
-}
-
-@keyframes scroll-text {
-    0%{
-        transform: translateX(110%); 
-        color: white;
-    }
-    100% {
-        transform: translateX(-110%); 
-        color: white;
-    }
 }

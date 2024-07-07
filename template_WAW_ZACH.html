@@ -12,9 +12,9 @@
     <script>
         window.addEventListener('resize', scaleDisplay);
         document.addEventListener('DOMContentLoaded', function () {
-            scaleDisplay();
             replaceTemplateValues();
-            scrollText();
+            canvasSetup();
+            scaleDisplay();
         });
 
         function scaleDisplay() {
@@ -23,6 +23,12 @@
 
             display.style.transform = 'scale(' + scaleFactor + ')';
             display.style.transformOrigin = 'top left';
+
+            var all_canvas = document.getElementsByClassName('scrollCanvas');
+            for (var i = 0; i < all_canvas.length; i++) {
+                all_canvas[i].style.transform = 'scale(' + 1 / scaleFactor + ')';
+                all_canvas[i].style.transformOrigin = 'top left';
+            }
         }
 
         function replaceTemplateValues() {
@@ -47,7 +53,7 @@
             viaStations.setAttribute('data-scroll-text', urlParams.get('via_stations'));
             operator.innerHTML = urlParams.get('operator');
 
-            if (urlParams.has('info_bar') && urlParams.get('info_bar') != '') { 
+            if (urlParams.has('info_bar') && urlParams.get('info_bar') != '') {
                 infoBar.innerHTML = urlParams.get('info_bar');
                 infoBar.setAttribute('data-scroll-text', urlParams.get('info_bar'));
             } else {
@@ -55,36 +61,67 @@
             }
         }
 
-        function scrollText() {
-            var scrollElements = document.getElementsByClassName('scroll');
-            for (var i = 0; i < scrollElements.length; i++) {
-                var scrollElement = scrollElements[i];
-                var scrollText = scrollElement.getAttribute('data-scroll-text');
-                let scroll_animation_duration;
-                if (scrollElement.id == 'via_stations') {
-                    if (scrollText.length >= 42) {
-                        scrollElement.setAttribute("class", 'scrolling');
-                        continue;
-                    } 
-                    scroll_animation_duration = scrollText.length / 3.8;
-                } else if (scrollElement.id == 'info_bar') {
-                    scroll_animation_duration = scrollText.length / 3.1;
-                    if (scrollText.length >= 47) {
-                        scrollElement.setAttribute("class", 'scrolling');
-                        continue;
-                    } 
-                } else {
-                    if (scrollText.length >= 18) {
-                        scrollElement.setAttribute("class", 'scrolling');
-                        continue;
-                    } 
-                    scroll_animation_duration = scrollText.length;
+        function canvasSetup() {
+            const canvases = document.querySelectorAll('.scrollCanvas');
+
+            canvases.forEach(canvas => {
+                const ctx = canvas.getContext('2d');
+
+                canvas.width = window.innerWidth;
+                canvas.height = 40; // Adjust height as needed
+
+                // Text properties
+                let scrollText = canvas.getAttribute('text-scroll') || "Default scrolling text";
+                const fontSize = parseInt(canvas.getAttribute('text-size')) || 30; // Default font size is 30
+                const fontFamily = "Arial";
+                const letterSpacing = 50; // Space between text instances
+
+                // Calculate text width for animation
+                ctx.font = `${fontSize}px ${fontFamily}`;
+                const textWidth = ctx.measureText(scrollText).width;
+
+                // Calculate number of text instances needed to fill the canvas width
+                const numInstances = Math.ceil(canvas.width / (textWidth + letterSpacing));
+
+                // Initialize text positions
+                let textPositions = [];
+                for (let i = 0; i < numInstances; i++) {
+                    textPositions.push(i * (textWidth + letterSpacing));
                 }
-                scrollElement.innerHTML = scrollText;
-                scrollElement.style.setProperty('--scroll-animation-duration', scroll_animation_duration + 's');
-                scrollElement.style.setProperty('--scroll-animation-delay', (scroll_animation_duration / 2) + 's');
-            }
+
+                // Animation variables
+                let scrollSpeed = 1; // Adjust scrolling speed
+                let scrollPosition = 0;
+
+                // Animation function
+                function animate() {
+                    // Clear canvas
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    // Draw text instances
+                    ctx.fillStyle = 'white';
+                    ctx.font = `${fontSize}px ${fontFamily}`;
+
+                    for (let i = 0; i < textPositions.length; i++) {
+                        const x = textPositions[i] - scrollPosition;
+                        ctx.fillText(scrollText, x, canvas.height - 10);
+                    }
+
+                    // Move text positions
+                    scrollPosition += scrollSpeed;
+                    if (scrollPosition > (textWidth + letterSpacing)) {
+                        scrollPosition = 0;
+                    }
+
+                    // Request next frame
+                    requestAnimationFrame(animate);
+                }
+
+                // Start animation
+                animate();
+            });
         }
+
     </script>
     <div id="display_box">
         <li id="display">
@@ -100,12 +137,14 @@
                 </div>
             </ul>
             <ul id="row2" class="row">
-                <div id="destination" class="scroll">{DESTINATION}</div>
+                <div id="destination"><canvas class="scrollCanvas" id="destination_canvas"
+                        text-scroll="{DESTINATION_CANVAS}" text-size="40"></canvas></div>
             </ul>
             <ul id="row3" class="row">
                 <div id="via_stations_box">
                     <div class="label">Stacje pośrednie / Via stations:</div>
-                    <div id="via_stations" class="scroll">{VIA_STATIONS}</div>
+                    <div id="via_stations"><canvas class="scrollCanvas" id="via_stations_canvas"
+                            text-scroll="{VIA_STATIONS_CANVAS}"></canvas></div>
                 </div>
             </ul>
             <ul id="row4" class="row">
@@ -115,7 +154,8 @@
                 </div>
             </ul>
             <ul id="info_bar_box" class="row">
-                <div id="info_bar" class="scroll">{INFO_BAR}</div>
+                <div id="info_bar"><canvas class="scrollCanvas" id="info_bar_canvas"
+                        text-scroll="{INFO_BAR_CANVAS}"></canvas></div>
             </ul>
         </li>
     </div>
