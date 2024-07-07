@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wyświetlacz / Display</title>
     <link rel="stylesheet" href="template_WAW_ZACH.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
 </head>
 
 <body>
@@ -47,7 +49,7 @@
             viaStations.setAttribute('data-scroll-text', urlParams.get('via_stations'));
             operator.innerHTML = urlParams.get('operator');
 
-            if (urlParams.has('info_bar') && urlParams.get('info_bar') != '') { 
+            if (urlParams.has('info_bar') && urlParams.get('info_bar') != '') {
                 infoBar.innerHTML = urlParams.get('info_bar');
                 infoBar.setAttribute('data-scroll-text', urlParams.get('info_bar'));
             } else {
@@ -56,34 +58,46 @@
         }
 
         function scrollText() {
-            var scrollElements = document.getElementsByClassName('scroll');
-            for (var i = 0; i < scrollElements.length; i++) {
-                var scrollElement = scrollElements[i];
-                var scrollText = scrollElement.getAttribute('data-scroll-text');
-                let scroll_animation_duration;
-                if (scrollElement.id == 'via_stations') {
-                    if (scrollText.length >= 42) {
-                        scrollElement.setAttribute("class", 'scrolling');
-                        continue;
-                    } 
-                    scroll_animation_duration = scrollText.length / 3.8;
-                } else if (scrollElement.id == 'info_bar') {
-                    scroll_animation_duration = scrollText.length / 3.1;
-                    if (scrollText.length >= 47) {
-                        scrollElement.setAttribute("class", 'scrolling');
-                        continue;
-                    } 
-                } else {
-                    if (scrollText.length >= 18) {
-                        scrollElement.setAttribute("class", 'scrolling');
-                        continue;
-                    } 
-                    scroll_animation_duration = scrollText.length;
+            const elements = document.querySelectorAll('.scroll');
+
+            elements.forEach(element => {
+                const parentWidth = element.parentElement.offsetWidth;
+                const textWidth = element.offsetWidth;
+                const textLength = element.textContent.length;
+                const elementId = element.id;
+                let maxTextWidth;
+
+                if (elementId === 'destination') {
+                    maxTextWidth = 18;
+                } else if (elementId === 'via_stations') {
+                    maxTextWidth = 42;
+                } else if (elementId === 'info_bar') {
+                    maxTextWidth = 44;
                 }
-                scrollElement.innerHTML = scrollText;
-                scrollElement.style.setProperty('--scroll-animation-duration', scroll_animation_duration + 's');
-                scrollElement.style.setProperty('--scroll-animation-delay', (scroll_animation_duration / 2) + 's');
-            }
+
+                if (textLength > maxTextWidth) {
+                    const clone = element.cloneNode(true);
+                    element.parentElement.appendChild(clone);
+
+                    const gap = 20; // pixels
+                    const totalWidth = textWidth + gap;
+                    const speed = 50; // pixels per second
+                    const duration = totalWidth / speed;
+
+                    const animateText = () => {
+                        gsap.fromTo([element, clone],
+                            { x: parentWidth },
+                            {
+                                x: -totalWidth,
+                                duration: duration,
+                                ease: "linear",
+                                onComplete: animateText,
+                            });
+                    };
+
+                    animateText();
+                }
+            });
         }
     </script>
     <div id="display_box">
@@ -100,12 +114,16 @@
                 </div>
             </ul>
             <ul id="row2" class="row">
-                <div id="destination" class="scroll">{DESTINATION}</div>
+                <div class="box_scroll">
+                    <div id="destination" class="scroll">{DESTINATION}</div>
+                </div>
             </ul>
             <ul id="row3" class="row">
                 <div id="via_stations_box">
                     <div class="label">Stacje pośrednie / Via stations:</div>
-                    <div id="via_stations" class="scroll">{VIA_STATIONS}</div>
+                    <div class="box_scroll">
+                        <div id="via_stations" class="scroll">{VIA_STATIONS}</div>
+                    </div>
                 </div>
             </ul>
             <ul id="row4" class="row">
@@ -115,7 +133,9 @@
                 </div>
             </ul>
             <ul id="info_bar_box" class="row">
-                <div id="info_bar" class="scroll">{INFO_BAR}</div>
+                <div class="box_scroll">
+                    <div id="info_bar" class="scroll">{INFO_BAR}</div>
+                </div>
             </ul>
         </li>
     </div>
