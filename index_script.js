@@ -16,8 +16,9 @@ function generateFromTemplate() {
     let input_operator = document.getElementById("input_operator").value;
     let input_info_bar = document.getElementById("input_info_bar").value;
 
-    let params = "?" + "time=" + input_time + "&train_number=" + input_train_number + "&destination=" + input_destination + "&via_stations=" + input_via_stations + "&operator=" + input_operator + "&info_bar=" + input_info_bar;
+    let params = "?" + "time=" + input_time + "&train_number=" + input_train_number + "&destination=" + input_destination + "&via_stations=" + input_via_stations + "&operator=" + input_operator + "&info_bar=" + input_info_bar + " ***";
 
+    params = encodeURI(params);
     template_iframe.setAttribute("src", "template_WAW_ZACH.html" + params);
 }
 

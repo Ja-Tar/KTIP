@@ -101,9 +101,15 @@ ul {
 
 .box_scroll {
     display: flex;
-    gap: 38px;
+    overflow: visible;
+    white-space: nowrap;
 }
 
-.scroll {
-    padding-left: 38px;
+.scrolling, .clone {
+    padding-right: 38px;
 }
+
+#info_bar{
+    padding-right: 8px !important;
+}
+

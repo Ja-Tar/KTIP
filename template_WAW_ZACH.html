@@ -16,7 +16,6 @@
         document.addEventListener('DOMContentLoaded', function () {
             scaleDisplay();
             replaceTemplateValues();
-            scrollText();
         });
 
         function scaleDisplay() {
@@ -53,7 +52,7 @@
                 infoBar.innerHTML = urlParams.get('info_bar');
                 infoBar.setAttribute('data-scroll-text', urlParams.get('info_bar'));
             } else {
-                infoBar.parentElement.style.display = "none"
+                infoBar.parentElement.parentElement.style.display = "none"
             }
         }
 
@@ -61,8 +60,6 @@
             const elements = document.querySelectorAll('.scroll');
 
             elements.forEach(element => {
-                // Marquee effect
-
                 const parentWidth = element.parentElement.offsetWidth;
                 const textWidth = element.offsetWidth;
                 const textLength = element.textContent.length;
@@ -82,6 +79,7 @@
                     const textClone = element.cloneNode(true);
                     textClone.classList.remove('scroll');
                     textClone.classList.add('clone');
+                    element.classList.add('scrolling');
                     element.parentElement.appendChild(textClone);
 
                     const texts = gsap.utils.toArray(`#${elementId}`), 
@@ -90,7 +88,6 @@
             });
         }
 
-        // Wywołanie funkcji scrollText po załadowaniu strony
         window.onload = scrollText;
     </script>
     <div id="display_box">
