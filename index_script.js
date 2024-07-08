@@ -20,6 +20,7 @@ function generateFromTemplate() {
 
     params = encodeURI(params);
     template_iframe.setAttribute("src", "template_WAW_ZACH.html" + params);
+    template_iframe.parentElement.style.display = "block";
 }
 
 function openInNewTab() {
