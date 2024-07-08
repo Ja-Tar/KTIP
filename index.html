@@ -12,24 +12,25 @@
         <h1>KTIP - Kreator Tablic Informacji Pasażerskiej</h1>
 
         <div id="form">
-            <label for="time">Czas:</label>
+            <label for="time">Czas: <span style="color: red;">*</span></label>
             <input type="time" id="input_time" name="time" required>
             <br>
-            <label for="train_number">Numer pociągu:</label>
+            <label for="train_number">Numer pociągu: <span style="color: red;">*</span></label>
             <input type="text" id="input_train_number" name="train_number" required>
             <br>
-            <label for="destination">Stacja docelowa:</label>
+            <label for="destination">Stacja docelowa: <span style="color: red;">*</span></label>
             <input type="text" id="input_destination" name="destination" required>
             <br>
-            <label for="via_stations">Stacje pośrednie:</label>
+            <label for="via_stations">Stacje pośrednie: </label>
             <input type="text" id="input_via_stations" name="via_stations" required>
             <br>
-            <label for="operator">Przewoźnik:</label>
+            <label for="operator">Przewoźnik: <span style="color: red;">*</span></label>
             <input type="text" id="input_operator" name="operator" required>
             <br>
             <label for="info_bar">Pasek informacyjny:</label>
             <input type="text" id="input_info_bar" name="info_bar" required>
             <br>
+            <p><span style="color: red;">*</span> - pole obowiązkowe</p>
             <button id="button_submit">Generuj</button>
         </div><br>
 

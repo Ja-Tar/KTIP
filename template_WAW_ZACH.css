@@ -37,6 +37,10 @@ ul {
     padding-right: 0px;
 }
 
+li {
+    list-style-type: none;
+}
+
 .label {
     font-style: italic;
 }
