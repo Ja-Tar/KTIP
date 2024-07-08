@@ -65,19 +65,22 @@
                 const textLength = element.textContent.length;
                 const elementId = element.id;
                 let maxTextLength;
+                let addText = '';
 
                 if (elementId === 'destination') {
                     maxTextLength = 17;
-                    element.textContent += '   ';
+                    addText = '   ';
                 } else if (elementId === 'via_stations') {
                     maxTextLength = 42;
-                    element.textContent += '   ';
+                    addText = '   ';
                 } else if (elementId === 'info_bar') {
                     maxTextLength = 44;
-                    element.textContent += '  ***  ';
+                    addText = '  ***  ';
                 }
 
                 if (textLength > maxTextLength) {
+                    element.textContent += addText;
+
                     // Marquee effect infinite loop
                     const textClone = element.cloneNode(true);
                     textClone.classList.add('clone');
