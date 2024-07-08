@@ -68,18 +68,19 @@
 
                 if (elementId === 'destination') {
                     maxTextLength = 17;
+                    element.textContent += '   ';
                 } else if (elementId === 'via_stations') {
                     maxTextLength = 42;
+                    element.textContent += '   ';
                 } else if (elementId === 'info_bar') {
                     maxTextLength = 44;
+                    element.textContent += '  ***  ';
                 }
 
                 if (textLength > maxTextLength) {
                     // Marquee effect infinite loop
                     const textClone = element.cloneNode(true);
-                    textClone.classList.remove('scroll');
                     textClone.classList.add('clone');
-                    element.classList.add('scrolling');
                     element.parentElement.appendChild(textClone);
 
                     const texts = gsap.utils.toArray(`#${elementId}`), 

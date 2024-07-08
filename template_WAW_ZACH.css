@@ -104,12 +104,3 @@ ul {
     overflow: visible;
     white-space: nowrap;
 }
-
-.scrolling, .clone {
-    padding-right: 38px;
-}
-
-#info_bar{
-    padding-right: 8px !important;
-}
-
