@@ -99,36 +99,11 @@ ul {
 
 /* Scroll text */
 
+.box_scroll {
+    display: flex;
+    gap: 38px;
+}
+
 .scroll {
-    white-space: nowrap;
-    overflow: hidden;
-    position: inline-block;
+    padding-left: 38px;
 }
-
-/*
-.scrolling::after, .scrolling::before {
-    content: attr(data-scroll-text);
-    color: transparent;
-    position: absolute;
-    white-space: nowrap;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    animation: scroll-text var(--scroll-animation-duration) linear infinite; 
-}
-
-.scrolling::before {
-    animation-delay: var(--scroll-animation-delay); 
-}
-
-@keyframes scroll-text {
-    0%{
-        transform: translateX(110%); 
-        color: white;
-    }
-    100% {
-        transform: translateX(-110%); 
-        color: white;
-    }
-}
-*/

@@ -7,7 +7,7 @@
     <title>Wyświetlacz / Display</title>
     <link rel="stylesheet" href="template_WAW_ZACH.css">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+    <script src="gasp_simless_loop.js"></script>
 </head>
 
 <body>
@@ -61,44 +61,37 @@
             const elements = document.querySelectorAll('.scroll');
 
             elements.forEach(element => {
+                // Marquee effect
+
                 const parentWidth = element.parentElement.offsetWidth;
                 const textWidth = element.offsetWidth;
                 const textLength = element.textContent.length;
                 const elementId = element.id;
-                let maxTextWidth;
+                let maxTextLength;
 
                 if (elementId === 'destination') {
-                    maxTextWidth = 18;
+                    maxTextLength = 17;
                 } else if (elementId === 'via_stations') {
-                    maxTextWidth = 42;
+                    maxTextLength = 42;
                 } else if (elementId === 'info_bar') {
-                    maxTextWidth = 44;
+                    maxTextLength = 44;
                 }
 
-                if (textLength > maxTextWidth) {
-                    const clone = element.cloneNode(true);
-                    element.parentElement.appendChild(clone);
+                if (textLength > maxTextLength) {
+                    // Marquee effect infinite loop
+                    const textClone = element.cloneNode(true);
+                    textClone.classList.remove('scroll');
+                    textClone.classList.add('clone');
+                    element.parentElement.appendChild(textClone);
 
-                    const gap = 20; // pixels
-                    const totalWidth = textWidth + gap;
-                    const speed = 50; // pixels per second
-                    const duration = totalWidth / speed;
-
-                    const animateText = () => {
-                        gsap.fromTo([element, clone],
-                            { x: parentWidth },
-                            {
-                                x: -totalWidth,
-                                duration: duration,
-                                ease: "linear",
-                                onComplete: animateText,
-                            });
-                    };
-
-                    animateText();
+                    const texts = gsap.utils.toArray(`#${elementId}`), 
+                        loop = horizontalLoop(texts, {paused: false, repeat: -1, speed: 0.6});
                 }
             });
         }
+
+        // Wywołanie funkcji scrollText po załadowaniu strony
+        window.onload = scrollText;
     </script>
     <div id="display_box">
         <li id="display">
