@@ -16,6 +16,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             scaleDisplay();
             replaceTemplateValues();
+            firefoxCheck();
         });
 
         function scaleDisplay() {
@@ -108,6 +109,23 @@
                         loop = horizontalLoop(texts, {paused: false, repeat: -1, speed: 0.6});
                 }
             });
+        }
+
+        function firefoxCheck() {
+            var isFirefox = !!navigator.userAgent.match(/firefox/i);
+            if (isFirefox) {
+                let delay_background = document.getElementById('delay_background');
+                let delay = document.getElementById('delay');
+                let train_number = document.getElementById('train_number');
+                let via_stations = document.getElementById('via_stations');
+                let operator = document.getElementById('operator');
+
+                delay_background.style.height = '45%';
+                delay.style.transform = 'translate(0%, -37%)'
+                train_number.style.transform = 'translate(-2%, -20%)'
+                via_stations.style.transform = 'translate(0%, -15%)'
+                operator.style.transform = 'translate(0%, -15%)'
+            }
         }
 
         window.onload = scrollText;

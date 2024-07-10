@@ -10,7 +10,7 @@ Wzorowano na tablicach informacyjnych stacji Warszawa Zachodnia.
 
 ## Funkcje
 - [x] Generowanie tablic podobnych do tych na stacji Warszawa Zachodnia
-- [ ] Opóźnienie pociągu (osobny element)
+- [x] Opóźnienie pociągu (osobny element)
 - [x] Opóźnienie pociągu (na pasku informacyjnym)
 - [x] Pasek informacyjny
 - [x] Wybór stacji końcowej
@@ -35,7 +35,7 @@ Inspired by the information boards at the Warsaw Zachodnia station.
 
 ## Features
 - [x] Generating screens similar to those at the Warsaw Zachodnia station
-- [ ] Train delay (separate element)
+- [x] Train delay (separate element)
 - [x] Train delay (on the information bar)
 - [x] Information bar
 - [x] End station selection
