@@ -23,6 +23,7 @@ function generateFromTemplate() {
     let input_delay = document.getElementById("input_delay").value;
     let input_colorbar = document.getElementById("input_colorbar").value
     let input_colorfont= document.getElementById("input_colorfont").value
+    let input_delay_type = document.getElementById("delay_input_type").value;
 
     if (input_time == "" || input_train_number == "" || input_destination == "" || input_operator == "") {
         alert("Uzupełnij wszystkie wymagane pola!");
@@ -34,6 +35,10 @@ function generateFromTemplate() {
         input_info_bar = temp_delay + "  ***  " + input_info_bar_more;
     } else {
         input_info_bar = input_info_bar.replaceAll("<min>", input_delay);
+    }
+
+    if (input_delay_type == "bar") {
+        input_delay = "";
     }
 
     let params = "?" + "time=" + input_time + "&train_number=" + input_train_number + "&destination=" + input_destination + "&via_stations=" + input_via_stations + "&operator=" + input_operator + "&info_bar=" + input_info_bar + "&delay=" + input_delay + "&colorbar=" + input_colorbar + "&colorfont=" + input_colorfont;

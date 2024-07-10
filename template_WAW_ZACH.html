@@ -34,11 +34,11 @@
             var operator = document.getElementById('operator');
             var infoBar = document.getElementById('info_bar');
             var infoBarBox = document.getElementById('info_bar_box');
-            // var delay = document.getElementById('delay'); // TODO
+            var delay = document.getElementById('delay');
 
             var urlParams = new URLSearchParams(window.location.search);
 
-            if (!urlParams.has('time') || !urlParams.has('train_number') || !urlParams.has('destination') || !urlParams.has('via_stations') || !urlParams.has('operator') || !urlParams.has('info_bar')) {
+            if (!urlParams.has('time') || !urlParams.has('train_number') || !urlParams.has('destination') || !urlParams.has('operator')) {
                 return;
             }
 
@@ -49,6 +49,12 @@
             viaStations.innerHTML = urlParams.get('via_stations');
             viaStations.setAttribute('data-scroll-text', urlParams.get('via_stations'));
             operator.innerHTML = urlParams.get('operator');
+
+            if (urlParams.has('delay') && urlParams.get('delay') != '' && urlParams.get('delay') != '0') {
+                delay.innerHTML = "~" + urlParams.get('delay') + "' ";
+            } else {
+                delay.parentElement.parentElement.style.display = "none";
+            }
 
             if (urlParams.has('info_bar') && urlParams.get('info_bar') != '') {
                 infoBar.innerHTML = urlParams.get('info_bar');
@@ -110,9 +116,9 @@
         <li id="display">
             <ul id="row1" class="row">
                 <div id="time">00:00</div>
-                <div id="delay_box" style="display: none;">
+                <div id="delay_box">
                     <div class="label">Opóźniony / Delayed:</div>
-                    <div id="delay">~5'</div> <!-- TODO -->
+                    <div id="delay_background"><div id="delay">~5' </div></div> <!-- TODO -->
                 </div>
                 <div id="train_number_box">
                     <div class="label">Numer / Number:</div>
