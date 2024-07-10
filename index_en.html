@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>KTIP</title>
+    <meta name="description" content="Polish Passenger Information Display Generator">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="index_style.css">
+</head>
+
+<body>
+    <h1>KTIP - Polish Passenger Information Display Generator </h1>
+    <div id="form">
+        <select id="template_select">
+            <option value="normal">Passing through the station</option>
+            <option value="termination">End of the route at the station</option>
+        </select>
+        <hr>
+        <div id="input_fields_normal">
+            <label for="time">Time: <span style="color: red;">*</span></label>
+            <input type="time" id="input_time" name="time">
+            <br>
+            <label for="train_number">Train number: <span style="color: red;">*</span></label>
+            <input type="text" id="input_train_number" name="train_number">
+            <br>
+            <label for="destination">Destination station: <span style="color: red;">*</span></label>
+            <input type="text" id="input_destination" name="destination">
+            <br>
+            <label for="via_stations">Via stations: </label>
+            <input type="text" id="input_via_stations" name="via_stations">
+            <br>
+            <label for="operator">Operator: <span style="color: red;">*</span></label>
+            <input type="text" id="input_operator" name="operator">
+            <br>
+        </div>
+        <div id="input_fields_termination" style="display: none;">
+            <label for="train_number_termination">Train number: <span style="color: red;">*</span></label>
+            <input type="text" id="input_train_number_termination" name="train_number_termination">
+            <label for="time_of_arrival">Time of arrival: <span style="color: red;">*</span></label>
+            <input type="time" id="input_time_of_arrival" name="time_of_arrival">
+            <br>
+            <label for="starting_station">Starting station: <span style="color: red;">*</span></label>
+            <input type="text" id="input_starting_station" name="starting_station">
+            <br>
+        </div>
+        <label for="info_bar">Information bar:</label>
+        <div class="input_div">
+            <input type="text" id="input_info_bar" name="info_bar">
+            <input type="text" id="input_info_bar_more" name="info_bar_more" style="display: none;">
+        </div>
+        <p id="required_fields"><span style="color: red;">*</span> - pole obowiązkowe</p>
+        <hr>
+        <label for="delay">Delay:</label>
+        <div class="input_div">
+            <input type="number" id="input_delay" name="delay" min="0" step="1" value="0">
+            <select id="delay_input_type">
+                <option value="delay_box" selected>Place the delay in a separate field</option>
+                <option value="bar">Place the delay in the information bar</option>
+            </select>
+        </div>
+        <br>
+        <label for="colorbar">Color of the bar:</label>
+        <input type="color" id="input_colorbar" name="colorbar" value="#2f353d">
+        <br>
+        <label for="colorfont">Color of the font in the bar:</label>
+        <input type="color" id="input_colorfont" name="colorfont" value="#ffffff">
+        <br>
+        <button id="button_submit" class="button_blue">Generate</button> <button id="button_reset"
+            class="button_red">Reset</button>
+    </div><br>
+
+    <div id="template_box">
+        <iframe id="template_iframe" style="width:600px ; height: 306px;">
+
+        </iframe><br><br>
+        <button id="button_new_tab" class="button_blue">Open in a new tab</button>
+        <button id="button_save" style="display: none;">Zapisz</button> <!-- TODO -->
+    </div>
+
+    <script src="index_script.js" async defer></script>
+</body>
+
+</html>
