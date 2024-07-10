@@ -13,21 +13,38 @@
 <body>
     <h1>KTIP - Kreator Tablic Informacji Pasażerskiej</h1>
     <div id="form">
-        <label for="time">Czas: <span style="color: red;">*</span></label>
-        <input type="time" id="input_time" name="time">
-        <br>
-        <label for="train_number">Numer pociągu: <span style="color: red;">*</span></label>
-        <input type="text" id="input_train_number" name="train_number">
-        <br>
-        <label for="destination">Stacja docelowa: <span style="color: red;">*</span></label>
-        <input type="text" id="input_destination" name="destination">
-        <br>
-        <label for="via_stations">Stacje pośrednie: </label>
-        <input type="text" id="input_via_stations" name="via_stations">
-        <br>
-        <label for="operator">Przewoźnik: <span style="color: red;">*</span></label>
-        <input type="text" id="input_operator" name="operator">
-        <br>
+        <select id="template_select">
+            <option value="normal">Przejazd przez stację</option>
+            <option value="termination">Koniec trasy na stacji</option>
+        </select>
+        <hr>
+        <div id="input_fields_normal">
+            <label for="time">Czas: <span style="color: red;">*</span></label>
+            <input type="time" id="input_time" name="time">
+            <br>
+            <label for="train_number">Numer pociągu: <span style="color: red;">*</span></label>
+            <input type="text" id="input_train_number" name="train_number">
+            <br>
+            <label for="destination">Stacja docelowa: <span style="color: red;">*</span></label>
+            <input type="text" id="input_destination" name="destination">
+            <br>
+            <label for="via_stations">Stacje pośrednie: </label>
+            <input type="text" id="input_via_stations" name="via_stations">
+            <br>
+            <label for="operator">Przewoźnik: <span style="color: red;">*</span></label>
+            <input type="text" id="input_operator" name="operator">
+            <br>
+        </div>
+        <div id="input_fields_termination" style="display: none;">
+            <label for="train_number_termination">Numer pociągu: <span style="color: red;">*</span></label>
+            <input type="text" id="input_train_number_termination" name="train_number_termination">
+            <label for="time_of_arrival">Czas przyjazdu: <span style="color: red;">*</span></label>
+            <input type="time" id="input_time_of_arrival" name="time_of_arrival">
+            <br>
+            <label for="starting_station">Stacja początkowa: <span style="color: red;">*</span></label>
+            <input type="text" id="input_starting_station" name="starting_station">
+            <br>
+        </div>
         <label for="info_bar">Pasek informacyjny:</label>
         <div class="input_div">
             <input type="text" id="input_info_bar" name="info_bar">
