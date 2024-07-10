@@ -101,6 +101,24 @@ li {
     font-style: italic;
 }
 
+#delay_box {
+    margin-top: 5px;
+}
+
+#delay_background {
+    background-color: red;
+    display: flex;
+    width: fit-content;
+    height: 45%;
+    transform: translate(0%, 10%);
+}
+
+#delay {
+    font-size: 290%;
+    font-weight: bolder;
+    transform: translate(0%, -37%); 
+}
+
 /* Scroll text */
 
 .box_scroll {
