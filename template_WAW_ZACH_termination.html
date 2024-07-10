@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wyświetlacz / Display</title>
-    <link rel="stylesheet" href="template_WAW_ZACH.css">
+    <link rel="stylesheet" href="template_WAW_ZACH_termination.css">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="gasp_simless_loop.js"></script>
 </head>
@@ -16,7 +16,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             scaleDisplay();
             replaceTemplateValues();
-            firefoxCheck();
+            firefoxCheck(); 
         });
 
         function scaleDisplay() {
@@ -28,28 +28,23 @@
         }
 
         function replaceTemplateValues() {
-            var time = document.getElementById('time');
+            var time_of_arrival = document.getElementById('time_of_arrival');
             var trainNumber = document.getElementById('train_number');
-            var destination = document.getElementById('destination');
-            var viaStations = document.getElementById('via_stations');
-            var operator = document.getElementById('operator');
+            var starting_station = document.getElementById('starting_station');
             var infoBar = document.getElementById('info_bar');
             var infoBarBox = document.getElementById('info_bar_box');
             var delay = document.getElementById('delay');
 
             var urlParams = new URLSearchParams(window.location.search);
 
-            if (!urlParams.has('time') || !urlParams.has('train_number') || !urlParams.has('destination') || !urlParams.has('operator')) {
+            if (!urlParams.has('time_of_arrival') || !urlParams.has('train_number') || !urlParams.has('starting_station')) {
                 return;
             }
 
-            time.innerHTML = urlParams.get('time');
+            time_of_arrival.innerHTML = urlParams.get('time_of_arrival');
             trainNumber.innerHTML = urlParams.get('train_number');
-            destination.innerHTML = urlParams.get('destination');
-            destination.setAttribute('data-scroll-text', urlParams.get('destination'));
-            viaStations.innerHTML = urlParams.get('via_stations');
-            viaStations.setAttribute('data-scroll-text', urlParams.get('via_stations'));
-            operator.innerHTML = urlParams.get('operator');
+            starting_station.innerHTML = urlParams.get('starting_station');
+            starting_station.setAttribute('data-scroll-text', urlParams.get('starting_station'));
 
             if (urlParams.has('delay') && urlParams.get('delay') != '' && urlParams.get('delay') != '0') {
                 delay.innerHTML = "~" + urlParams.get('delay') + "' ";
@@ -84,15 +79,9 @@
                 let maxTextLength;
                 let addText = '';
 
-                if (elementId === 'destination') {
-                    maxTextLength = 17;
+                if (elementId === 'starting_station') {
+                    maxTextLength = 30; // TODO: Make tests
                     addText = '   ';
-                } else if (elementId === 'via_stations') {
-                    maxTextLength = 42;
-                    addText = '   ';
-                    if (textLength == 0) {
-                        element.textContent = ' ';
-                    }
                 } else if (elementId === 'info_bar') {
                     maxTextLength = 44;
                     addText = '  ***  ';
@@ -115,17 +104,23 @@
         function firefoxCheck() {
             var isFirefox = !!navigator.userAgent.match(/firefox/i);
             if (isFirefox) {
+                let time_of_arrival = document.getElementById('time_of_arrival');
                 let delay_background = document.getElementById('delay_background');
                 let delay = document.getElementById('delay');
                 let train_number = document.getElementById('train_number');
-                let via_stations = document.getElementById('via_stations');
-                let operator = document.getElementById('operator');
+                let starting_station = document.getElementById('starting_station');
+                let terminates_pl = document.getElementById('terminates_pl');
+                let terminates_en = document.getElementById('terminates_en');
 
-                delay_background.style.height = '45%';
-                delay.style.transform = 'translate(0%, -37%)'
+                time_of_arrival.style.transform = 'translate(0%, -20%)'
+                delay_background.style.height = '65%';
+                delay_background.style.transform = 'translate(0%, 5%)'
+                delay.style.transform = 'translate(0%, -30%)'
                 train_number.style.transform = 'translate(-2%, -20%)'
-                via_stations.style.transform = 'translate(0%, -15%)'
-                operator.style.transform = 'translate(0%, -15%)'
+                starting_station.style.transform = 'translate(0%, -10%)'
+                terminates_pl.style.fontSize = '480%';
+                terminates_en.style.fontSize = '350%';
+                terminates_en.style.transform = 'translate(0%, -10%)'
             }
         }
 
@@ -134,7 +129,10 @@
     <div id="display_box">
         <li id="display">
             <ul id="row1" class="row">
-                <div id="time">00:00</div>
+                <div id="time_of_arrival_box">
+                    <div class="label">Godzina przyjazdu / Time of arrival:</div>
+                    <div id="time_of_arrival">00:00</div>
+                </div>
                 <div id="delay_box">
                     <div class="label">Opóźniony / Delayed:</div>
                     <div id="delay_background"><div id="delay">~5' </div></div> <!-- TODO -->
@@ -145,22 +143,17 @@
                 </div>
             </ul>
             <ul id="row2" class="row">
-                <div class="box_scroll">
-                    <div id="destination" class="scroll">Warszawa Wschodnia</div>
-                </div>
-            </ul>
-            <ul id="row3" class="row">
-                <div id="via_stations_box">
-                    <div class="label">Stacje pośrednie / Via stations:</div>
+                <div id="starting_station_box">
+                    <div class="label">Stacja początkowa / Starting station:</div>
                     <div class="box_scroll">
-                        <div id="via_stations" class="scroll">Warszawa Centralna</div>
+                        <div id="starting_station" class="scroll">Siedlce</div>
                     </div>
                 </div>
             </ul>
-            <ul id="row4" class="row">
-                <div id="operator_box">
-                    <div class="label">Przewoźnik / Operator:</div>
-                    <div id="operator">Testowy Przewoźnik</div>
+            <ul id="row3" class="row">
+                <div id="terminates_box">
+                    <div id="terminates_pl">Pociąg kończy bieg</div>
+                    <div id="terminates_en">The train terminates here</div>
                 </div>
             </ul>
             <ul id="info_bar_box" class="row">

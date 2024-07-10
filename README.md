@@ -14,12 +14,12 @@ Wzorowano na tablicach informacyjnych stacji Warszawa Zachodnia.
 - [x] Opóźnienie pociągu (na pasku informacyjnym)
 - [x] Pasek informacyjny
 - [x] Wybór stacji końcowej
-- [ ] Wybór stacji początkowej (pociąg kończy bieg)
+- [x] Wybór stacji początkowej (pociąg kończy bieg)
 - [x] Stacje pośrednie
 - [x] Numer pociągu
 - [x] Informacja o przewoźniku
-- [ ] Informacja o końcu biegu pociągu (pociąg kończy bieg)
-- [ ] Godzina przyjazdu (pociąg kończy bieg)
+- [x] Informacja o końcu biegu pociągu (pociąg kończy bieg)
+- [x] Godzina przyjazdu (pociąg kończy bieg)
 - [x] Godzina odjazdu
 - [x] Zmiana koloru paska
 - [x] Zmiana koloru liter
@@ -39,12 +39,12 @@ Inspired by the information boards at the Warsaw Zachodnia station.
 - [x] Train delay (on the information bar)
 - [x] Information bar
 - [x] End station selection
-- [ ] Start station selection (train terminates)
+- [x] Start station selection (train terminates)
 - [x] Via stations
 - [x] Train number
 - [x] Carrier information
-- [ ] End of train run information (train terminates)
-- [ ] Arrival time (train terminates)
+- [x] End of train run information (train terminates)
+- [x] Arrival time (train terminates)
 - [x] Departure time
 - [x] Changing the color of the bar
 - [x] Changing the color of the letters

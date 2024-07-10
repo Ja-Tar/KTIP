@@ -18,9 +18,15 @@ body {
     background-color: #283c65;
 }
 
-#time {
+#time_of_arrival {
     font-weight: bolder;
-    font-size: 420%;
+    font-size: 280%;
+    transform: translate(0%, -12%);
+}
+
+#train_number_box {
+    margin-top: 5px;
+    margin-right: 10%;
 }
 
 .row {
@@ -44,15 +50,15 @@ li {
     font-style: italic;
 }
 
-#train_number_box {
-    margin-right: 10%;
+#time_of_arrival_box {
     margin-top: 5px;
+    height: 65px;
 }
 
 #train_number {
     position: absolute;
     font-size: 190%;
-    transform: translate(-2%, -15%);
+    transform: translate(-2%, -10%);
 }
 
 .row {
@@ -60,19 +66,12 @@ li {
     padding-right: 5px;
 }
 
-#destination {
-    font-size: 420%;
+#starting_station {
+    font-size: 280%;
+    white-space: nowrap;
+    overflow: hidden;
     font-weight: bolder;
-    white-space: nowrap;
-    overflow: hidden;
-    animation-duration: 16s;
-}
-
-#via_stations {
-    font-size: 180%;
-    white-space: nowrap;
-    overflow: hidden;
-    transform: translate(0%, -10%);
+    transform: translate(0%, -0%);
 }
 
 #operator {
@@ -82,8 +81,55 @@ li {
     transform: translate(0%, -10%);
 }
 
-#row1, #row4 {
+#row1,
+#row3 {
     margin-bottom: 0px;
+}
+
+#delay_box {
+    margin-top: 5px;
+    height: 65px;
+}
+
+#delay_background {
+    background-color: red;
+    display: flex;
+    width: fit-content;
+    height: 65%;
+    transform: translate(0%, 5%);
+}
+
+#row2 {
+    height: 75px;
+    margin-bottom: 0px;
+}
+
+#delay {
+    font-size: 290%;
+    font-weight: bolder;
+    transform: translate(0%, -15%);
+}
+
+#row3 {
+    background-color: maroon;
+    height: 177px;
+}
+
+#terminates_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    transform: translateY(-5px);
+}
+
+#terminates_pl {
+    font-size: 500%;
+}
+
+#terminates_en {
+    font-size: 380%;
 }
 
 #info_bar_box {
@@ -98,24 +144,6 @@ li {
     width: 100%;
     font-weight: bolder;
     font-style: italic;
-}
-
-#delay_box {
-    margin-top: 5px;
-}
-
-#delay_background {
-    background-color: red;
-    display: flex;
-    width: fit-content;
-    height: 55%;
-    transform: translate(0%, 10%);
-}
-
-#delay {
-    font-size: 290%;
-    font-weight: bolder;
-    transform: translate(0%, -20%); 
 }
 
 /* Scroll text */
@@ -133,9 +161,11 @@ li {
     0% {
         background-position: 0% 82%
     }
+
     50% {
         background-position: 100% 19%
     }
+
     100% {
         background-position: 0% 82%
     }
