@@ -10,7 +10,8 @@ Wzorowano na tablicach informacyjnych stacji Warszawa Zachodnia.
 
 ## Funkcje
 - [x] Generowanie tablic podobnych do tych na stacji Warszawa Zachodnia
-- [ ] Opóźnienie pociągu
+- [ ] Opóźnienie pociągu (osobny element)
+- [x] Opóźnienie pociągu (na pasku informacyjnym)
 - [x] Pasek informacyjny
 - [x] Wybór stacji końcowej
 - [ ] Wybór stacji początkowej (pociąg kończy bieg)
@@ -20,9 +21,8 @@ Wzorowano na tablicach informacyjnych stacji Warszawa Zachodnia.
 - [ ] Informacja o końcu biegu pociągu (pociąg kończy bieg)
 - [ ] Godzina przyjazdu (pociąg kończy bieg)
 - [x] Godzina odjazdu
-- [ ] Zmiana koloru paska
-- [ ] Zmiana koloru liter (biały / czarny)
-- [ ] Tęcza (kolorowy pasek)
+- [x] Zmiana koloru paska
+- [x] Zmiana koloru liter
 - [ ] Angielska wersja strony
 
 # EN 🇬🇧
@@ -35,7 +35,8 @@ Inspired by the information boards at the Warsaw Zachodnia station.
 
 ## Features
 - [x] Generating screens similar to those at the Warsaw Zachodnia station
-- [ ] Train delay
+- [ ] Train delay (separate element)
+- [x] Train delay (on the information bar)
 - [x] Information bar
 - [x] End station selection
 - [ ] Start station selection (train terminates)
@@ -45,9 +46,8 @@ Inspired by the information boards at the Warsaw Zachodnia station.
 - [ ] End of train run information (train terminates)
 - [ ] Arrival time (train terminates)
 - [x] Departure time
-- [ ] Changing the color of the bar
-- [ ] Changing the color of the letters (white / black)
-- [ ] Rainbow (colorful bar)
+- [x] Changing the color of the bar
+- [x] Changing the color of the letters
 - [ ] English version of the page
 
 ## < WORK IN PROGRESS > 
