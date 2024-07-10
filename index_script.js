@@ -19,18 +19,26 @@ function generateFromTemplate() {
     let input_via_stations = document.getElementById("input_via_stations").value;
     let input_operator = document.getElementById("input_operator").value;
     let input_info_bar = document.getElementById("input_info_bar").value;
+    let input_info_bar_more = document.getElementById("input_info_bar_more").value;
     let input_delay = document.getElementById("input_delay").value;
-    let input_colorbar = document.getElementById("input_colorbar").value;
-    let input_colorfont= document.getElementById("input_colorfont").value;
+    let input_colorbar = document.getElementById("input_colorbar").value
+    let input_colorfont= document.getElementById("input_colorfont").value
 
     if (input_time == "" || input_train_number == "" || input_destination == "" || input_operator == "") {
         alert("Uzupełnij wszystkie wymagane pola!");
         return;
     }
 
+    if (input_info_bar_more != "") {
+        let temp_delay = input_info_bar.replaceAll("<min>", input_delay);
+        input_info_bar = temp_delay + "  ***  " + input_info_bar_more;
+    } else {
+        input_info_bar = input_info_bar.replaceAll("<min>", input_delay);
+    }
+
     let params = "?" + "time=" + input_time + "&train_number=" + input_train_number + "&destination=" + input_destination + "&via_stations=" + input_via_stations + "&operator=" + input_operator + "&info_bar=" + input_info_bar + "&delay=" + input_delay + "&colorbar=" + input_colorbar + "&colorfont=" + input_colorfont;
 
-    params = encodeURI(params);
+    params = encodeURI(params).replaceAll("#", "%23");
     template_iframe.setAttribute("src", "template_WAW_ZACH.html" + params);
     template_iframe.parentElement.style.display = "block";
 }
@@ -61,12 +69,13 @@ function checkDelayInputType() {
         input_info_bar_more.style.display = "block";
         before_colorbar = input_colorbar.value;
         before_colorfont = input_colorfont.value;
-        input_colorbar.value = "#FF0000";
+        input_colorbar.value = "#C01C28";
         input_colorfont.value = "#FFFFFF";
     } else {
         input_info_bar.disabled = false;
         input_info_bar.value = "";
         input_info_bar_more.style.display = "none";
+        input_info_bar_more.value = "";
         input_colorbar.value = before_colorbar;
         input_colorfont.value = before_colorfont;
     }

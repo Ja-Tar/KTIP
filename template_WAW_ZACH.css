@@ -108,3 +108,23 @@ li {
     overflow: visible;
     white-space: nowrap;
 }
+
+/* Rainbow background effect */
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 82%
+    }
+    50% {
+        background-position: 100% 19%
+    }
+    100% {
+        background-position: 0% 82%
+    }
+}
+
+.rainbow {
+    background: linear-gradient(270deg, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+    background-size: 1400% 1400%;
+    animation: rainbow 10s ease infinite;
+}

@@ -33,6 +33,8 @@
             var viaStations = document.getElementById('via_stations');
             var operator = document.getElementById('operator');
             var infoBar = document.getElementById('info_bar');
+            var infoBarBox = document.getElementById('info_bar_box');
+            // var delay = document.getElementById('delay'); // TODO
 
             var urlParams = new URLSearchParams(window.location.search);
 
@@ -51,6 +53,13 @@
             if (urlParams.has('info_bar') && urlParams.get('info_bar') != '') {
                 infoBar.innerHTML = urlParams.get('info_bar');
                 infoBar.setAttribute('data-scroll-text', urlParams.get('info_bar'));
+                infoBarBox.style.backgroundColor = urlParams.get('colorbar');
+                infoBar.style.color = urlParams.get('colorfont');
+
+                // Easter egg (joke)
+                if (urlParams.get('info_bar').toLowerCase().includes('<egon>')) {
+                   infoBarBox.classList.add('rainbow');
+                }
             } else {
                 infoBar.parentElement.parentElement.style.display = "none"
             }
