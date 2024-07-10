@@ -14,7 +14,7 @@ body {
 
 #display {
     width: 700px;
-    height: 360px;
+    height: fit-content;
     background-color: #283c65;
 }
 
@@ -53,7 +53,7 @@ li {
 #train_number {
     position: absolute;
     font-size: 190%;
-    transform: translate(-2%, -20%);
+    transform: translate(-2%, -15%);
 }
 
 .row {
@@ -73,14 +73,14 @@ li {
     font-size: 180%;
     white-space: nowrap;
     overflow: hidden;
-    transform: translate(0%, -15%);
+    transform: translate(0%, -10%);
 }
 
 #operator {
     font-size: 160%;
     white-space: nowrap;
     overflow: hidden;
-    transform: translate(0%, -15%);
+    transform: translate(0%, -10%);
 }
 
 #row1, #row4 {
@@ -109,14 +109,14 @@ li {
     background-color: red;
     display: flex;
     width: fit-content;
-    height: 45%;
+    height: 55%;
     transform: translate(0%, 10%);
 }
 
 #delay {
     font-size: 290%;
     font-weight: bolder;
-    transform: translate(0%, -37%); 
+    transform: translate(0%, -20%); 
 }
 
 /* Scroll text */
@@ -125,6 +125,7 @@ li {
     display: flex;
     overflow: visible;
     white-space: nowrap;
+    align-items: center;
 }
 
 /* Rainbow background effect */
