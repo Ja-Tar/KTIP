@@ -50,7 +50,7 @@
             viaStations.setAttribute('data-scroll-text', urlParams.get('via_stations'));
             operator.innerHTML = urlParams.get('operator');
 
-            if (urlParams.has('delay') && urlParams.get('delay') != '') {
+            if (urlParams.has('delay') && urlParams.get('delay') != '' && urlParams.get('delay') != '0') {
                 delay.innerHTML = "~" + urlParams.get('delay') + "' ";
             } else {
                 delay.parentElement.parentElement.style.display = "none";
