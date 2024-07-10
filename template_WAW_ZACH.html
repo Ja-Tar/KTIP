@@ -73,6 +73,9 @@
                 } else if (elementId === 'via_stations') {
                     maxTextLength = 42;
                     addText = '   ';
+                    if (textLength == 0) {
+                        element.textContent = ' ';
+                    }
                 } else if (elementId === 'info_bar') {
                     maxTextLength = 44;
                     addText = '  ***  ';
