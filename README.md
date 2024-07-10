@@ -4,7 +4,7 @@ Strona do generowania ekranu tablic informacji pasażerskiej
 ## Informacje
 
 Wzorowano na tablicach informacyjnych stacji Warszawa Zachodnia.
-<ZDJĘCIE>
+![Screenshot 2024-07-10 at 09-22-06 KTIP](https://github.com/Ja-Tar/KTIP/assets/78786298/e0a207a3-0d68-471d-bc83-6ad8936c0fc0)
 
 ***UWAGA***: Autor **nie** jest powiązany z producentem tablic. To jest jedynie projekt hobbystyczny, który ma na celu umożliwienie generowania **podobnych** tablic informacyjnych.
 
@@ -31,7 +31,7 @@ A website for generating passenger information display screens
 ## Information
 
 Inspired by the information boards at the Warsaw Zachodnia station.
-<PICTURE>
+![Screenshot 2024-07-10 at 09-22-06 KTIP](https://github.com/Ja-Tar/KTIP/assets/78786298/e0a207a3-0d68-471d-bc83-6ad8936c0fc0)
 
 ## Features
 - [x] Generating screens similar to those at the Warsaw Zachodnia station
