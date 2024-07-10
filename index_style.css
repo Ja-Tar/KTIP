@@ -27,17 +27,26 @@ input {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
 button {
     padding: 10px;
-    background-color: #007bff;
-    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+
 }
-button:hover {
+.button_blue {
+    background-color: #007bff;
+    color: #fff;
+}
+.button_blue:hover {
     background-color: #0056b3;
 }
+.button_red {
+    background-color: #dc3545;
+    color: #fff;
+}
+
 #template_box {
     margin: 20px auto;
     background-color: #fff;
@@ -54,4 +63,8 @@ button:hover {
 #button_save {
     display: block;
     margin: 0 auto;
+}
+
+#required_fields {
+    font-size: 12px;
 }
