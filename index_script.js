@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function() {
+    checkDelayInputType();
+});
+
 document.getElementById("button_new_tab").addEventListener("click", function() {
     openInNewTab();
 });
@@ -37,3 +41,50 @@ function openInNewTab() {
 
     window.open(src, "_blank");
 }
+
+document.getElementById("delay_input_type").addEventListener("change", function() {
+    checkDelayInputType();
+});
+
+function checkDelayInputType() {
+    let delay_input_type = document.getElementById("delay_input_type").value;
+    let input_info_bar = document.getElementById("input_info_bar");
+    let input_info_bar_more = document.getElementById("input_info_bar_more");
+    let input_colorbar = document.getElementById("input_colorbar");
+    let input_colorfont = document.getElementById("input_colorfont");
+    let before_colorbar = '#2f353d';
+    let before_colorfont = '#FFFFFF';
+    
+    if (delay_input_type == "bar") {
+        input_info_bar.disabled = true;
+        input_info_bar.value = "Opóźniony: <min> minut / Delayed: <min> minutes";
+        input_info_bar_more.style.display = "block";
+        before_colorbar = input_colorbar.value;
+        before_colorfont = input_colorfont.value;
+        input_colorbar.value = "#FF0000";
+        input_colorfont.value = "#FFFFFF";
+    } else {
+        input_info_bar.disabled = false;
+        input_info_bar.value = "";
+        input_info_bar_more.style.display = "none";
+        input_colorbar.value = before_colorbar;
+        input_colorfont.value = before_colorfont;
+    }
+}
+
+function clearAllInputs() {
+    let inputs = document.getElementsByTagName("input");
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = "";
+    }
+    document.getElementById("input_delay").value = "0";
+    document.getElementById("delay_input_type").value = "delay_box";
+    document.getElementById("input_colorbar").value = "#2f353d";
+    document.getElementById("input_colorfont").value = "#FFFFFF";
+    document.getElementById("template_iframe").parentElement.style.display = "none";
+    checkDelayInputType();
+}
+
+document.getElementById("button_reset").addEventListener("click", function() {
+    clearAllInputs();
+});

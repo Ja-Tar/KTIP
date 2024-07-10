@@ -68,3 +68,39 @@ button {
 #required_fields {
     font-size: 12px;
 }
+
+.input_div {
+    display: flex;
+    align-items: baseline;
+}
+
+#input_delay {
+    margin-bottom: 0px;
+}
+
+select {
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}
+
+#input_info_bar_more {
+    flex-shrink: 1.1;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    #form {
+        width: 90%;
+    }
+    #template_box {
+        width: 90%;
+    }
+}
