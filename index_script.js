@@ -30,7 +30,11 @@ function generateFromTemplate() {
         let input_delay_type = document.getElementById("delay_input_type").value;
 
         if (input_time == "" || input_train_number == "" || input_destination == "" || input_operator == "") {
-            alert("Uzupełnij wszystkie wymagane pola!");
+            if (document.getElementById("flag_link").innerText == "🇬🇧") {
+                alert("Uzupełnij wszystkie wymagane pola!");
+            } else if (document.getElementById("flag_link").innerText == "🇵🇱") {
+                alert("Fill in all required fields!");
+            }
             return;
         }
 

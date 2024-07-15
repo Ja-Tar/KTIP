@@ -11,7 +11,8 @@
 </head>
 
 <body>
-    <h1>KTIP - Polish Passenger Information Display Generator </h1>
+    <h1>KTIP - Polish Passenger Information Display Generator <span id="lang_switch">
+            <a id="flag_link" href="index.html" title="Kliknij tutaj, aby przejść do polskiej wersji!">🇵🇱</a></span></h1>
     <div id="form">
         <select id="template_select">
             <option value="normal">Passing through the station</option>
@@ -64,7 +65,7 @@
         <label for="colorbar">Color of the bar:</label>
         <input type="color" id="input_colorbar" name="colorbar" value="#2f353d">
         <br>
-        <label for="colorfont">Color of the font in the bar:</label>
+        <label for="colorfont">Font color in the bar:</label>
         <input type="color" id="input_colorfont" name="colorfont" value="#ffffff">
         <br>
         <button id="button_submit" class="button_blue">Generate</button> <button id="button_reset"
@@ -76,7 +77,7 @@
 
         </iframe><br><br>
         <button id="button_new_tab" class="button_blue">Open in a new tab</button>
-        <button id="button_save" style="display: none;">Zapisz</button> <!-- TODO -->
+        <button id="button_save" style="display: none;">Save</button> <!-- TODO -->
     </div>
 
     <script src="index_script.js" async defer></script>
