@@ -65,7 +65,7 @@
 
                 // Easter egg (joke)
                 if (urlParams.get('info_bar').toLowerCase().includes('<egon>')) {
-                   infoBarBox.classList.add('rainbow');
+                    infoBarBox.classList.add('rainbow');
                 }
             } else {
                 infoBar.parentElement.style.display = "none"
@@ -106,8 +106,8 @@
                     textClone.classList.add('clone');
                     element.parentElement.appendChild(textClone);
 
-                    const texts = gsap.utils.toArray(`#${elementId}`), 
-                        loop = horizontalLoop(texts, {paused: false, repeat: -1, speed: 0.6});
+                    const texts = gsap.utils.toArray(`#${elementId}`),
+                        loop = horizontalLoop(texts, { paused: false, repeat: -1, speed: 0.6 });
                 }
             });
         }
@@ -137,7 +137,9 @@
                 <div id="time">00:00</div>
                 <div id="delay_box">
                     <div class="label">Opóźniony / Delayed:</div>
-                    <div id="delay_background"><div id="delay">~5' </div></div> <!-- TODO -->
+                    <div id="delay_background">
+                        <div id="delay">~5' </div>
+                    </div>
                 </div>
                 <div id="train_number_box">
                     <div class="label">Numer / Number:</div>

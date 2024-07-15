@@ -6,7 +6,7 @@ Strona do generowania ekranu tablic informacji pasażerskiej
 Wzorowano na tablicach informacyjnych stacji Warszawa Zachodnia.
 ![obraz](https://github.com/Ja-Tar/KTIP/assets/78786298/fa02f8de-0633-4df0-9b65-360db6f51dad)
 
-***UWAGA***: Autor **nie** jest powiązany z producentem tablic. To jest jedynie projekt hobbystyczny, który ma na celu umożliwienie generowania **podobnych** tablic informacyjnych.
+***UWAGA***: Autor **nie** jest powiązany z oryginalnym producentem tablic. To jest jedynie projekt hobbystyczny, który ma na celu umożliwienie generowania **podobnych** tablic informacyjnych.
 
 ## Funkcje
 - [x] Generowanie tablic podobnych do tych na stacji Warszawa Zachodnia
@@ -23,7 +23,7 @@ Wzorowano na tablicach informacyjnych stacji Warszawa Zachodnia.
 - [x] Godzina odjazdu
 - [x] Zmiana koloru paska
 - [x] Zmiana koloru liter
-- [ ] Angielska wersja strony
+- [x] Angielska wersja strony
 
 # EN 🇬🇧
 A website for generating passenger information display screens
@@ -32,6 +32,8 @@ A website for generating passenger information display screens
 
 Inspired by the information boards at the Warsaw Zachodnia station.
 ![obraz](https://github.com/Ja-Tar/KTIP/assets/78786298/51d6da46-f37c-44ca-9f1d-365fc0ba2f0e)
+
+***ATTENTION***: The author is **not** associated with the original manufacturer of the boards. This is just a hobby project that aims to enable the generation of **similar** information boards.
 
 ## Features
 - [x] Generating screens similar to those at the Warsaw Zachodnia station
@@ -48,6 +50,5 @@ Inspired by the information boards at the Warsaw Zachodnia station.
 - [x] Departure time
 - [x] Changing the color of the bar
 - [x] Changing the color of the letters
-- [ ] English version of the page
+- [x] English version of the page
 
-## < WORK IN PROGRESS > 

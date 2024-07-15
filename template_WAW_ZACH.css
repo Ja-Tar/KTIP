@@ -9,7 +9,7 @@ body {
 #display_box {
     width: 100vw;
     height: 100vh;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 #display {
@@ -82,7 +82,8 @@ li {
     transform: translate(0%, -10%);
 }
 
-#row1, #row4 {
+#row1,
+#row4 {
     margin-bottom: 0px;
 }
 
@@ -115,7 +116,7 @@ li {
 #delay {
     font-size: 290%;
     font-weight: bolder;
-    transform: translate(0%, -20%); 
+    transform: translate(0%, -20%);
 }
 
 /* Scroll text */
@@ -133,9 +134,11 @@ li {
     0% {
         background-position: 0% 82%
     }
+
     50% {
         background-position: 100% 19%
     }
+
     100% {
         background-position: 0% 82%
     }
