@@ -32,7 +32,7 @@ A website for generating passenger information display screens
 
 ## Information
 
-Inspired by the information boards at the Warsaw Zachodnia station.
+Inspired by the information boards at the Warsaw West (Warszawa Zachodnia) station.
 
 <img src="https://github.com/user-attachments/assets/6ae9853d-1264-4f39-aa7a-83b6531f2e41" width="500" />
 <img src="https://github.com/user-attachments/assets/19afe2c2-7157-4717-9b41-3eefb8edf6a5" width="500" />
