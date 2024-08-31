@@ -91,9 +91,16 @@ function generateFromTemplate() {
             input_delay = "";
         }
 
+        input_time_of_arrival = encodeURIComponent(input_time_of_arrival);
+        input_train_number = encodeURIComponent(input_train_number);
+        input_starting_station = encodeURIComponent(input_starting_station);
+        input_info_bar = encodeURIComponent(input_info_bar);
+        input_delay = encodeURIComponent(input_delay);
+        input_colorbar = encodeURIComponent(input_colorbar);
+        input_colorfont = encodeURIComponent(input_colorfont);
+
         let params = "?" + "time_of_arrival=" + input_time_of_arrival + "&train_number=" + input_train_number + "&starting_station=" + input_starting_station + "&info_bar=" + input_info_bar + "&delay=" + input_delay + "&colorbar=" + input_colorbar + "&colorfont=" + input_colorfont;
 
-        params = encodeURI(params).replaceAll("#", "%23");
         template_iframe.setAttribute("src", "template_WAW_ZACH_termination.html" + params);
         template_iframe.parentElement.style.display = "block";
     }
