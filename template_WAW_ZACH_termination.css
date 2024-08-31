@@ -112,7 +112,7 @@ li {
 
 #row3 {
     background-color: maroon;
-    height: 177px;
+    height: 160px;
 }
 
 #terminates_box {
@@ -121,7 +121,6 @@ li {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    transform: translateY(-5px);
 }
 
 #terminates_pl {
