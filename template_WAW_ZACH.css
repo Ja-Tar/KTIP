@@ -26,7 +26,6 @@ body {
 .row {
     display: flex;
     margin-top: 0px;
-    margin-bottom: 10px;
     justify-content: space-between;
     flex-wrap: wrap;
 }
@@ -61,7 +60,7 @@ li {
 }
 
 #destination {
-    font-size: 420%;
+    font-size: 500%;
     font-weight: bolder;
     white-space: nowrap;
     overflow: hidden;
@@ -69,22 +68,31 @@ li {
 }
 
 #via_stations {
-    font-size: 180%;
+    font-size: 200%;
     white-space: nowrap;
     overflow: hidden;
-    transform: translate(0%, -10%);
 }
 
 #operator {
-    font-size: 160%;
+    font-size: 180%;
     white-space: nowrap;
     overflow: hidden;
-    transform: translate(0%, -10%);
 }
 
-#row1,
-#row4 {
+#row1 {
+    margin-bottom: 12px;
+}
+
+#row2 {
+    margin-bottom: 10px;
+}
+
+#row3 {
     margin-bottom: 0px;
+}
+
+#row4 {
+    margin-bottom: 4px;
 }
 
 #info_bar_box {
