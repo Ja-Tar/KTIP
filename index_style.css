@@ -7,7 +7,16 @@ body {
 
 h1 {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+#lang_switch {
+    margin-left: 10px;
+    margin-bottom: -5px;
 }
 
 #form {
@@ -130,6 +139,7 @@ a:hover {
     display: inline-flex;
     align-items: center;
     height: 25px;
+    width: 35px;
 }
 
 /* Mobile */

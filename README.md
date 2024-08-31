@@ -56,3 +56,9 @@ Inspired by the information boards at the Warsaw West (Warszawa Zachodnia) stati
 - [x] Changing the color of the letters
 - [x] English version of the page
 
+# License
+All emojis designed by OpenMoji – the open-source emoji and icon project. License: CC BY-SA 4.0
+
+favicon.ico license information in LICENSE-favicon
+
+All other files are licensed under the GNU General Public License v3.0
