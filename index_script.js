@@ -49,9 +49,18 @@ function generateFromTemplate() {
             input_delay = "";
         }
 
+        input_time = encodeURIComponent(input_time);
+        input_train_number = encodeURIComponent(input_train_number);
+        input_destination = encodeURIComponent(input_destination);
+        input_via_stations = encodeURIComponent(input_via_stations);
+        input_operator = encodeURIComponent(input_operator);
+        input_info_bar = encodeURIComponent(input_info_bar);
+        input_delay = encodeURIComponent(input_delay);
+        input_colorbar = encodeURIComponent(input_colorbar);
+        input_colorfont = encodeURIComponent(input_colorfont);
+
         let params = "?" + "time=" + input_time + "&train_number=" + input_train_number + "&destination=" + input_destination + "&via_stations=" + input_via_stations + "&operator=" + input_operator + "&info_bar=" + input_info_bar + "&delay=" + input_delay + "&colorbar=" + input_colorbar + "&colorfont=" + input_colorfont;
 
-        params = encodeURI(params).replaceAll("#", "%23");
         template_iframe.setAttribute("src", "template_WAW_ZACH.html" + params);
         template_iframe.parentElement.style.display = "block";
 
