@@ -123,29 +123,6 @@
             });
         }
 
-        function firefoxCheck() {
-            var isFirefox = !!navigator.userAgent.match(/firefox/i);
-            if (isFirefox) {
-                let time_of_arrival = document.getElementById('time_of_arrival');
-                let delay_background = document.getElementById('delay_background');
-                let delay = document.getElementById('delay');
-                let train_number = document.getElementById('train_number');
-                let starting_station = document.getElementById('starting_station');
-                let terminates_pl = document.getElementById('terminates_pl');
-                let terminates_en = document.getElementById('terminates_en');
-
-                time_of_arrival.style.transform = 'translate(0%, -20%)'
-                delay_background.style.height = '65%';
-                delay_background.style.transform = 'translate(0%, 5%)'
-                delay.style.transform = 'translate(0%, -30%)'
-                train_number.style.transform = 'translate(-2%, -20%)'
-                starting_station.style.transform = 'translate(0%, -10%)'
-                terminates_pl.style.fontSize = '480%';
-                terminates_en.style.fontSize = '350%';
-                terminates_en.style.transform = 'translate(0%, -10%)'
-            }
-        }
-
         window.onload = scrollText;
     </script>
     <div id="display_box">
