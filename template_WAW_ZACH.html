@@ -127,6 +127,11 @@
                     textClone.classList.add('clone');
                     element.parentElement.appendChild(textClone);
 
+                    // Second clone for the seamless loop
+                    const textClone2 = element.cloneNode(true);
+                    textClone2.classList.add('clone');
+                    element.parentElement.appendChild(textClone2);
+
                     const texts = gsap.utils.toArray(`#${elementId}`),
                         loop = horizontalLoop(texts, { paused: false, repeat: -1, speed: 0.6 });
                 }
