@@ -58,7 +58,7 @@ li {
 #train_number {
     position: absolute;
     font-size: 190%;
-    transform: translate(-2%, -10%);
+    transform: translate(-2%, -5%);
 }
 
 .row {
@@ -88,26 +88,26 @@ li {
 
 #delay_box {
     margin-top: 5px;
-    height: 65px;
+    height: 72px;
 }
 
 #delay_background {
     background-color: red;
     display: flex;
     width: fit-content;
-    height: 65%;
-    transform: translate(0%, 5%);
-}
-
-#row2 {
-    height: 75px;
-    margin-bottom: 0px;
+    height: 55%;
+    transform: translate(0%, 15%);
 }
 
 #delay {
     font-size: 290%;
     font-weight: bolder;
-    transform: translate(0%, -15%);
+    transform: translate(0%, -19%);
+}
+
+#row2 {
+    height: 75px;
+    margin-bottom: 0px;
 }
 
 #row3 {

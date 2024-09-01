@@ -51,7 +51,7 @@ li {
 #train_number {
     position: absolute;
     font-size: 190%;
-    transform: translate(-2%, -15%);
+    transform: translate(-2%, -5%);
 }
 
 .row {
@@ -68,7 +68,7 @@ li {
 }
 
 #via_stations {
-    font-size: 200%;
+    font-size: 180%;
     white-space: nowrap;
     overflow: hidden;
 }
@@ -80,11 +80,11 @@ li {
 }
 
 #row1 {
-    margin-bottom: 12px;
+    margin-bottom: 18px;
 }
 
 #row2 {
-    margin-bottom: 10px;
+    margin-bottom: 18px;
 }
 
 #row3 {
@@ -111,6 +111,7 @@ li {
 
 #delay_box {
     margin-top: 5px;
+    height: 72px;
 }
 
 #delay_background {
@@ -118,13 +119,13 @@ li {
     display: flex;
     width: fit-content;
     height: 55%;
-    transform: translate(0%, 10%);
+    transform: translate(0%, 15%);
 }
 
 #delay {
     font-size: 290%;
     font-weight: bolder;
-    transform: translate(0%, -20%);
+    transform: translate(0%, -19%);
 }
 
 /* Scroll text */
