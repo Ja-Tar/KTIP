@@ -59,7 +59,7 @@ function generateFromTemplate() {
         input_colorbar = encodeURIComponent(input_colorbar);
         input_colorfont = encodeURIComponent(input_colorfont);
 
-        let params = "?" + "time=" + input_time + "&train_number=" + input_train_number + "&destination=" + input_destination + "&via_stations=" + input_via_stations + "&operator=" + input_operator + "&info_bar=" + input_info_bar + "&delay=" + input_delay + "&colorbar=" + input_colorbar + "&colorfont=" + input_colorfont;
+        let params = `?time=${input_time}&train_number=${input_train_number}&destination=${input_destination}&via_stations=${input_via_stations}&operator=${input_operator}&info_bar=${input_info_bar}&delay=${input_delay}&colorbar=${input_colorbar}&colorfont=${input_colorfont}`;
 
         template_iframe.setAttribute("src", "template_WAW_ZACH.html" + params);
         template_iframe.parentElement.style.display = "block";
@@ -99,7 +99,7 @@ function generateFromTemplate() {
         input_colorbar = encodeURIComponent(input_colorbar);
         input_colorfont = encodeURIComponent(input_colorfont);
 
-        let params = "?" + "time_of_arrival=" + input_time_of_arrival + "&train_number=" + input_train_number + "&starting_station=" + input_starting_station + "&info_bar=" + input_info_bar + "&delay=" + input_delay + "&colorbar=" + input_colorbar + "&colorfont=" + input_colorfont;
+        let params = `?time_of_arrival=${input_time_of_arrival}&train_number=${input_train_number}&starting_station=${input_starting_station}&info_bar=${input_info_bar}&delay=${input_delay}&colorbar=${input_colorbar}&colorfont=${input_colorfont}`;
 
         template_iframe.setAttribute("src", "template_WAW_ZACH_termination.html" + params);
         template_iframe.parentElement.style.display = "block";
