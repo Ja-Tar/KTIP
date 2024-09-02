@@ -20,8 +20,9 @@ body {
 
 #time_of_arrival {
     font-weight: bolder;
-    font-size: 280%;
-    transform: translate(0%, -12%);
+    font-size: 300%;
+    transform: translate(0%, -5%);
+    height: 100%;
 }
 
 #train_number_box {
@@ -88,21 +89,22 @@ li {
 
 #delay_box {
     margin-top: 5px;
-    height: 72px;
+    height: 65px;
 }
 
 #delay_background {
     background-color: red;
     display: flex;
     width: fit-content;
-    height: 55%;
+    height: 38px;
     transform: translate(0%, 15%);
 }
 
 #delay {
-    font-size: 290%;
-    font-weight: bolder;
-    transform: translate(0%, -19%);
+    font-size: 220%;
+    font-weight: 700;
+    transform: translate(0%, -4%);
+    padding-right: 8px;
 }
 
 #row2 {
@@ -121,14 +123,15 @@ li {
     align-items: center;
     flex-direction: column;
     width: 100%;
+    transform: translateY(-1%);
 }
 
 #terminates_pl {
-    font-size: 500%;
+    font-size: 490%;
 }
 
 #terminates_en {
-    font-size: 380%;
+    font-size: 370%;
 }
 
 #info_bar_box {
@@ -143,6 +146,11 @@ li {
     width: 100%;
     font-weight: bolder;
     font-style: italic;
+}
+
+/* When no info bar applied to termination box */
+.no_info_bar {
+    transform: translateY(10%) !important;
 }
 
 /* Scroll text */

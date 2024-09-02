@@ -33,6 +33,7 @@
             var starting_station = document.getElementById('starting_station');
             var infoBar = document.getElementById('info_bar');
             var infoBarBox = document.getElementById('info_bar_box');
+            var terminatesBox = document.getElementById('terminates_box');
             var delay = document.getElementById('delay');
             var urlParamsEncoded = location.href.split('?')[1];
 
@@ -52,7 +53,7 @@
             starting_station.setAttribute('data-scroll-text', urlParams.get('starting_station'));
 
             if (urlParams.has('delay') && urlParams.get('delay') != '' && urlParams.get('delay') != '0') {
-                delay.innerHTML = "~" + urlParams.get('delay') + "' ";
+                delay.innerHTML = "~" + urlParams.get('delay') + "'";
             } else {
                 delay.parentElement.parentElement.style.display = "none";
             }
@@ -69,7 +70,8 @@
                 }
             } else {
                 infoBar.parentElement.style.display = "none"
-                infoBarBox.style.backgroundColor = "transparent";
+                infoBarBox.style.backgroundColor = "maroon";
+                terminatesBox.classList.add('no_info_bar');
             }
 
             if (urlParams.has('empty') && urlParams.get('empty') == 'true') {
@@ -134,7 +136,7 @@
                 <div id="delay_box">
                     <div class="label">Opóźniony / Delayed:</div>
                     <div id="delay_background">
-                        <div id="delay">~5' </div>
+                        <div id="delay">~5'</div>
                     </div>
                 </div>
                 <div id="train_number_box">
