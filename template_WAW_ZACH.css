@@ -20,7 +20,7 @@ body {
 
 #time {
     font-weight: bolder;
-    font-size: 420%;
+    font-size: 440%;
 }
 
 .row {
@@ -80,7 +80,7 @@ li {
 }
 
 #row1 {
-    margin-bottom: 15px;
+    margin-bottom: 11px;
 }
 
 #row2 {
@@ -111,21 +111,22 @@ li {
 
 #delay_box {
     margin-top: 5px;
-    height: 72px;
+    height: 50px;
 }
 
 #delay_background {
     background-color: red;
     display: flex;
     width: fit-content;
-    height: 55%;
+    height: 42px;
     transform: translate(0%, 15%);
 }
 
 #delay {
     font-size: 290%;
     font-weight: bolder;
-    transform: translate(0%, -19%);
+    transform: translate(0%, -14%);
+    padding-right: 10px;
 }
 
 /* Scroll text */
