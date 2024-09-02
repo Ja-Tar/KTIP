@@ -15,7 +15,7 @@ function generateFromTemplate() {
     let template_iframe = document.getElementById("template_iframe");
     let template_select = document.getElementById("template_select").value;
 
-    if (template_select == "normal") {
+    if (template_select === "normal") {
 
         let input_time = document.getElementById("input_time").value;
         let input_train_number = document.getElementById("input_train_number").value;
@@ -29,23 +29,23 @@ function generateFromTemplate() {
         let input_colorfont = document.getElementById("input_colorfont").value
         let input_delay_type = document.getElementById("delay_input_type").value;
 
-        if (input_time == "" || input_train_number == "" || input_destination == "" || input_operator == "") {
-            if (document.getElementById("flag_link").innerText == "🇬🇧") {
+        if (input_time === "" || input_train_number === "" || input_destination === "" || input_operator === "") {
+            if (document.getElementById("flag_link").innerText === "🇬🇧") {
                 alert("Uzupełnij wszystkie wymagane pola!");
-            } else if (document.getElementById("flag_link").innerText == "🇵🇱") {
+            } else if (document.getElementById("flag_link").innerText === "🇵🇱") {
                 alert("Fill in all required fields!");
             }
             return;
         }
 
-        if (input_info_bar_more != "") {
+        if (input_info_bar_more !== "") {
             let temp_delay = input_info_bar.replaceAll("<min>", input_delay);
             input_info_bar = temp_delay + "  ***  " + input_info_bar_more;
         } else {
             input_info_bar = input_info_bar.replaceAll("<min>", input_delay);
         }
 
-        if (input_delay_type == "bar") {
+        if (input_delay_type === "bar") {
             input_delay = "";
         }
 
@@ -64,7 +64,7 @@ function generateFromTemplate() {
         template_iframe.setAttribute("src", "template_WAW_ZACH.html" + params);
         template_iframe.parentElement.style.display = "block";
 
-    } else if (template_select == "termination") {
+    } else if (template_select === "termination") {
         let input_time_of_arrival = document.getElementById("input_time_of_arrival").value;
         let input_train_number = document.getElementById("input_train_number_termination").value;
         let input_starting_station = document.getElementById("input_starting_station").value;
@@ -75,19 +75,19 @@ function generateFromTemplate() {
         let input_colorfont = document.getElementById("input_colorfont").value
         let input_delay_type = document.getElementById("delay_input_type").value;
 
-        if (input_time_of_arrival == "" || input_train_number == "" || input_starting_station == "") {
+        if (input_time_of_arrival === "" || input_train_number === "" || input_starting_station === "") {
             alert("Uzupełnij wszystkie wymagane pola!");
             return;
         }
 
-        if (input_info_bar_more != "") {
+        if (input_info_bar_more !== "") {
             let temp_delay = input_info_bar.replaceAll("<min>", input_delay);
             input_info_bar = temp_delay + "  ***  " + input_info_bar_more;
         } else {
             input_info_bar = input_info_bar.replaceAll("<min>", input_delay);
         }
 
-        if (input_delay_type == "bar") {
+        if (input_delay_type === "bar") {
             input_delay = "";
         }
 
@@ -126,7 +126,7 @@ function checkDelayInputType() {
     let before_colorbar = '#2f353d';
     let before_colorfont = '#FFFFFF';
 
-    if (delay_input_type == "bar") {
+    if (delay_input_type === "bar") {
         input_info_bar.disabled = true;
         input_info_bar.value = "Opóźniony: <min> minut / Delayed: <min> minutes";
         input_info_bar_more.style.display = "block";
@@ -168,12 +168,12 @@ function templateChange() {
     let input_fields_normal = document.getElementById("input_fields_normal");
     let input_fields_termination = document.getElementById("input_fields_termination");
 
-    if (template_select == "normal") {
+    if (template_select === "normal") {
         template_iframe.setAttribute("src", "template_WAW_ZACH.html");
         input_fields_normal.style.display = "block";
         input_fields_termination.style.display = "none";
         template_box.style.display = "none";
-    } else if (template_select == "termination") {
+    } else if (template_select === "termination") {
         template_iframe.setAttribute("src", "template_WAW_ZACH_termination.html");
         input_fields_normal.style.display = "none";
         input_fields_termination.style.display = "block";
