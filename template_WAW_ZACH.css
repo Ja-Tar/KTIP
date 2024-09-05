@@ -51,7 +51,7 @@ li {
 #train_number {
     position: absolute;
     font-size: 190%;
-    transform: translate(-2%, -5%);
+    transform: translate(0%, -5%);
 }
 
 .row {
@@ -73,10 +73,15 @@ li {
     overflow: hidden;
 }
 
-#operator {
+#operator,
+#train_name {
     font-size: 180%;
     white-space: nowrap;
     overflow: hidden;
+}
+
+#train_name_box {
+    margin-left: 10%;
 }
 
 #row1 {
@@ -93,6 +98,7 @@ li {
 
 #row4 {
     margin-bottom: 4px;
+    justify-content: left;
 }
 
 #info_bar_box {

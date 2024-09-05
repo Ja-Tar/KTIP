@@ -34,6 +34,7 @@
             var viaStations = document.getElementById('via_stations');
             var operator = document.getElementById('operator');
             var infoBar = document.getElementById('info_bar');
+            var train_name = document.getElementById('train_name');
             var infoBarBox = document.getElementById('info_bar_box');
             var delay = document.getElementById('delay');
             var urlParamsEncoded = location.href.split('?')[1];
@@ -55,6 +56,12 @@
             viaStations.innerHTML = urlParams.get('via_stations');
             viaStations.setAttribute('data-scroll-text', urlParams.get('via_stations'));
             operator.innerHTML = urlParams.get('operator');
+            
+            if (urlParams.has('train_name') && urlParams.get('train_name') != '') {
+                train_name.innerHTML = urlParams.get('train_name');
+            } else {
+                train_name.parentElement.style.display = "none";
+            }
 
             if (urlParams.has('delay') && urlParams.get('delay') != '' && urlParams.get('delay') != '0') {
                 delay.innerHTML = "~" + urlParams.get('delay') + "'";
@@ -172,6 +179,10 @@
                 <div id="operator_box">
                     <div class="label">Przewoźnik / Operator:</div>
                     <div id="operator">Testowy Przewoźnik</div>
+                </div>
+                <div id="train_name_box">
+                    <div class="label">Nazwa / Name:</div>
+                    <div id="train_name">Testowa nazwa</div>
                 </div>
             </ul>
             <ul id="info_bar_box" class="row">

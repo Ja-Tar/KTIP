@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    checkDelayInputType();
+    checkInputsType();
     templateChange();
 });
 
@@ -24,6 +24,8 @@ function generateFromTemplate() {
         let input_operator = document.getElementById("input_operator").value;
         let input_info_bar = document.getElementById("input_info_bar").value;
         let input_info_bar_more = document.getElementById("input_info_bar_more").value;
+        let input_train_name = document.getElementById("input_train_name").value; // NEW: train name
+        let input_name_type = document.getElementById("input_name_type").value; // NEW: train name type
         let input_delay = document.getElementById("input_delay").value;
         let input_colorbar = document.getElementById("input_colorbar").value
         let input_colorfont = document.getElementById("input_colorfont").value
@@ -38,15 +40,31 @@ function generateFromTemplate() {
             return;
         }
 
-        if (input_info_bar_more !== "") {
-            let temp_delay = input_info_bar.replaceAll("<min>", input_delay);
-            input_info_bar = `${temp_delay}  ***  ${input_info_bar_more}`;
-        } else {
-            input_info_bar = input_info_bar.replaceAll("<min>", input_delay);
-        }
+        let temp_info_bar = input_info_bar.replaceAll("<min>", input_delay);
 
-        if (input_delay_type === "bar") {
+        if (input_name_type === "bar" && input_delay_type === "bar") {
+            if (input_info_bar_more !== "") {
+                input_info_bar = `${temp_info_bar}${input_train_name}  ***  ${input_info_bar_more}`; 
+                // w temp_info_bar jest już " *** " pomiędzy opóźnieniem a nazwą pociągu
+            } else {
+                input_info_bar = `${temp_info_bar}  ***  ${input_train_name}`;
+            }
             input_delay = "";
+            input_train_name = "";
+        } else if (input_delay_type === "bar") {
+            if (input_info_bar_more !== "") {
+                input_info_bar = `${temp_info_bar}  ***  ${input_info_bar_more}`;
+            } else {
+                input_info_bar = temp_info_bar;
+            }
+            input_delay = "";
+        } else if (input_name_type === "bar") {
+            if (input_info_bar_more !== "") {
+                input_info_bar = `${input_train_name}  ***  ${input_info_bar_more}`;
+            } else {
+                input_info_bar = input_train_name;
+            }
+            input_train_name = "";
         }
 
         input_time = encodeURIComponent(input_time);
@@ -55,11 +73,12 @@ function generateFromTemplate() {
         input_via_stations = encodeURIComponent(input_via_stations);
         input_operator = encodeURIComponent(input_operator);
         input_info_bar = encodeURIComponent(input_info_bar);
+        input_train_name = encodeURIComponent(input_train_name);
         input_delay = encodeURIComponent(input_delay);
         input_colorbar = encodeURIComponent(input_colorbar);
         input_colorfont = encodeURIComponent(input_colorfont);
 
-        let params = `?time=${input_time}&train_number=${input_train_number}&destination=${input_destination}&via_stations=${input_via_stations}&operator=${input_operator}&info_bar=${input_info_bar}&delay=${input_delay}&colorbar=${input_colorbar}&colorfont=${input_colorfont}`;
+        let params = `?time=${input_time}&train_number=${input_train_number}&destination=${input_destination}&via_stations=${input_via_stations}&operator=${input_operator}&info_bar=${input_info_bar}&train_name=${input_train_name}&delay=${input_delay}&colorbar=${input_colorbar}&colorfont=${input_colorfont}`;
 
         template_iframe.setAttribute("src", "template_WAW_ZACH.html" + params); // skipcq: JS-0246
         template_iframe.parentElement.style.display = "block";
@@ -114,11 +133,16 @@ function openInNewTab() {
 }
 
 document.getElementById("delay_input_type").addEventListener("change", function () {
-    checkDelayInputType();
+    checkInputsType();
 });
 
-function checkDelayInputType() {
+document.getElementById("input_name_type").addEventListener("change", function () {
+    checkInputsType();
+});
+
+function checkInputsType() {
     let delay_input_type = document.getElementById("delay_input_type").value;
+    let name_input_type = document.getElementById("input_name_type").value;
     let input_info_bar = document.getElementById("input_info_bar");
     let input_info_bar_more = document.getElementById("input_info_bar_more");
     let input_colorbar = document.getElementById("input_colorbar");
@@ -126,10 +150,29 @@ function checkDelayInputType() {
     let before_colorbar = '#2f353d';
     let before_colorfont = '#FFFFFF';
 
-    if (delay_input_type === "bar") {
+    if (name_input_type === "bar" && delay_input_type === "bar") {
+        input_info_bar.disabled = true;
+        input_info_bar.value = `Opóźniony: <min> minut / Delayed: <min> minutes  ***  <nazwa>`;
+        input_info_bar_more.style.display = "block";
+        input_info_bar_more.style.flexShrink = "1.9";
+        before_colorbar = input_colorbar.value;
+        before_colorfont = input_colorfont.value;
+        input_colorbar.value = "#C01C28";
+        input_colorfont.value = "#FFFFFF";
+    } else if (name_input_type === "bar") {
+        input_info_bar.disabled = true;
+        input_info_bar.value = '<nazwa>'
+        input_info_bar_more.style.display = "block";
+        input_info_bar_more.style.flexShrink = "0.145";
+        before_colorbar = input_colorbar.value;
+        before_colorfont = input_colorfont.value;
+        input_colorbar.value = "#2f353d";
+        input_colorfont.value = "#FFFFFF";
+    } else if (delay_input_type === "bar") {
         input_info_bar.disabled = true;
         input_info_bar.value = "Opóźniony: <min> minut / Delayed: <min> minutes";
         input_info_bar_more.style.display = "block";
+        input_info_bar_more.style.flexShrink = "";
         before_colorbar = input_colorbar.value;
         before_colorfont = input_colorfont.value;
         input_colorbar.value = "#C01C28";
@@ -154,7 +197,7 @@ function clearAllInputs() {
     document.getElementById("input_colorbar").value = "#2f353d";
     document.getElementById("input_colorfont").value = "#FFFFFF";
     document.getElementById("template_iframe").parentElement.style.display = "none";
-    checkDelayInputType();
+    checkInputsType();
 }
 
 document.getElementById("button_reset").addEventListener("click", function () {
