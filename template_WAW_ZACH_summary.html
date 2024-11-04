@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Wyświetlacz / Display</title>
+    <link rel="stylesheet" href="template_WAW_ZACH.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="gasp_simless_loop.js"></script>
+</head>
+
+<body>
+    <script>
+        window.addEventListener('resize', scaleDisplay);
+        document.addEventListener('DOMContentLoaded', function () {
+            scaleDisplay();
+            replaceTemplateValues();
+        });
+
+        function scaleDisplay() {
+            var display = document.getElementById('display');
+            var scaleFactor = window.innerWidth / 700;
+
+            display.style.transform = 'scale(' + scaleFactor + ')';
+            display.style.transformOrigin = 'top left';
+        }
+
+        function replaceTemplateValues() {
+            var time = document.getElementById('time');
+            var trainNumber = document.getElementById('train_number');
+            var destination = document.getElementById('destination');
+            var viaStations = document.getElementById('via_stations');
+            var operator = document.getElementById('operator');
+            var infoBar = document.getElementById('info_bar');
+            var train_name = document.getElementById('train_name');
+            var infoBarBox = document.getElementById('info_bar_box');
+            var delay = document.getElementById('delay');
+            var urlParamsEncoded = location.href.split('?')[1];
+
+            var urlParams = decodeURIComponent(urlParamsEncoded).split('&').reduce(function (urlParams, param) {
+                var paramKeyValue = param.split('=');
+                urlParams.set(paramKeyValue[0], decodeURIComponent(paramKeyValue[1]));
+                return urlParams;
+            }, new Map());
+
+            if (!urlParams.has('time') || !urlParams.has('train_number') || !urlParams.has('destination') || !urlParams.has('operator')) {
+                return;
+            }
+
+            time.innerHTML = urlParams.get('time');
+            trainNumber.innerHTML = urlParams.get('train_number');
+            destination.innerHTML = urlParams.get('destination');
+            destination.setAttribute('data-scroll-text', urlParams.get('destination'));
+            viaStations.innerHTML = urlParams.get('via_stations');
+            viaStations.setAttribute('data-scroll-text', urlParams.get('via_stations'));
+            operator.innerHTML = urlParams.get('operator');
+            
+            if (urlParams.has('train_name') && urlParams.get('train_name') != '') {
+                train_name.innerHTML = urlParams.get('train_name');
+            } else {
+                train_name.parentElement.style.display = "none";
+            }
+
+            if (urlParams.has('delay') && urlParams.get('delay') != '' && urlParams.get('delay') != '0') {
+                delay.innerHTML = "~" + urlParams.get('delay') + "'";
+            } else {
+                delay.parentElement.parentElement.style.display = "none";
+            }
+
+            if (urlParams.has('info_bar') && urlParams.get('info_bar') != '') {
+                infoBar.innerHTML = urlParams.get('info_bar');
+                infoBar.setAttribute('data-scroll-text', urlParams.get('info_bar'));
+                infoBarBox.style.backgroundColor = urlParams.get('colorbar');
+                infoBar.style.color = urlParams.get('colorfont');
+
+                // Easter egg (joke)
+                if (urlParams.get('info_bar').toLowerCase().includes('<egon>')) {
+                    infoBarBox.classList.add('rainbow');
+                }
+            } else {
+                infoBar.parentElement.style.display = "none"
+                infoBarBox.style.backgroundColor = "transparent";
+            }
+
+            if (urlParams.has('empty') && urlParams.get('empty') == 'true') {
+                time.innerHTML = "     "
+                trainNumber.innerHTML = " "
+                destination.innerHTML = " "
+                viaStations.innerHTML = " "
+                operator.innerHTML = " "
+                train_name.innerHTML = ""
+                delay.innerHTML = " "
+                
+                let labels = document.getElementsByClassName('label');
+                for (let i = 0; i < labels.length; i++) {
+                    labels[i].style.color = 'transparent';
+                }
+    
+                return;
+            }
+        }
+
+        function scrollText() {
+            const elements = document.querySelectorAll('.scroll');
+
+            elements.forEach(element => {
+                const parentWidth = element.parentElement.offsetWidth;
+                const textWidth = element.offsetWidth;
+                const textLength = element.textContent.length;
+                const elementId = element.id;
+                let maxTextLength;
+                let addText = '';
+
+                if (elementId === 'destination') {
+                    maxTextLength = 14;
+                    addText = '   ';
+                } else if (elementId === 'via_stations') {
+                    maxTextLength = 36;
+                    addText = '   ';
+                    if (textLength == 0) {
+                        element.textContent = ' ';
+                    }
+                } else if (elementId === 'info_bar') {
+                    maxTextLength = 38;
+                    addText = '  ***  ';
+                }
+
+                if (textLength > maxTextLength) {
+                    element.textContent += addText;
+
+                    // Marquee effect infinite loop
+                    const textClone = element.cloneNode(true);
+                    textClone.classList.add('clone');
+                    element.parentElement.appendChild(textClone);
+
+                    // Second clone for the seamless loop
+                    const textClone2 = element.cloneNode(true);
+                    textClone2.classList.add('clone');
+                    element.parentElement.appendChild(textClone2);
+
+                    const texts = gsap.utils.toArray(`#${elementId}`),
+                        loop = horizontalLoop(texts, { paused: false, repeat: -1, speed: 0.6 });
+                }
+            });
+        }
+
+        window.onload = scrollText;
+    </script>
+    <div id="display_box">
+        <li id="display">
+            <ul id="row1" class="row">
+                <div id="time">00:00</div>
+                <div id="delay_box">
+                    <div class="label">Opóźniony / Delayed:</div>
+                    <div id="delay_background">
+                        <div id="delay">~5'</div>
+                    </div>
+                </div>
+                <div id="train_number_box">
+                    <div class="label">Numer / Number:</div>
+                    <div id="train_number">EIE 1234</div>
+                </div>
+            </ul>
+            <ul id="row2" class="row">
+                <div class="box_scroll">
+                    <div id="destination" class="scroll">Warszawa Wschodnia</div>
+                </div>
+            </ul>
+            <ul id="row3" class="row">
+                <div id="via_stations_box">
+                    <div class="label">Stacje pośrednie / Via stations:</div>
+                    <div class="box_scroll">
+                        <div id="via_stations" class="scroll">Warszawa Centralna</div>
+                    </div>
+                </div>
+            </ul>
+            <ul id="row4" class="row">
+                <div id="operator_box">
+                    <div class="label">Przewoźnik / Operator:</div>
+                    <div id="operator">Testowy Przewoźnik</div>
+                </div>
+                <div id="train_name_box">
+                    <div class="label">Nazwa / Name:</div>
+                    <div id="train_name">Testowa nazwa</div>
+                </div>
+            </ul>
+            <ul id="info_bar_box" class="row">
+                <div class="box_scroll">
+                    <div id="info_bar" class="scroll">Ekran Testowy</div>
+                </div>
+            </ul>
+        </li>
+    </div>
+    <!-- The ids are used for replacing the template value -->
+</body>
+
+</html>
