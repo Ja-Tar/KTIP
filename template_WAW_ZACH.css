@@ -1,9 +1,10 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     color: white;
     font-size: calc(16 / 700 * 100vw); /* Set font size relative to viewport width (16px at 700vw) */
     margin: 0;
     padding: 0;
+    line-height: 1.15;
 }
 
 #display_box {
@@ -22,7 +23,8 @@ body {
 #time {
     font-weight: bolder;
     font-size: 440%;
-    max-height: 1.2em;
+    line-height: 1;
+    margin-top: 0.05em;
 }
 
 .row {
@@ -49,7 +51,7 @@ li {
 
 #train_number_box {
     margin-right: 10%;
-    margin-top: 0.12em; 
+    margin-top: 0.2em; 
 }
 
 #train_number {
@@ -115,7 +117,7 @@ li {
 }
 
 #delay_box {
-    margin-top: 0.3125em; /* 5px / 16px */
+    margin-top: 0.15em;
     height: 3.125em; /* 50px / 16px */
 }
 
@@ -123,15 +125,14 @@ li {
     background-color: red;
     display: flex;
     width: fit-content;
-    height: 2.625em; /* 42px / 16px */
-    transform: translate(0%, 15%);
+    line-height: 0.9;
+    margin-top: 0.4em; /* 3px / 16px */
 }
 
 #delay {
     font-size: 290%;
     font-weight: bolder;
-    transform: translate(0%, -14%);
-    padding-right: 0.625em; /* 10px / 16px */
+    padding-right: 0.2em; /* 10px / 16px */
 }
 
 /* Scroll text */

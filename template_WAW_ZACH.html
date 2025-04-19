@@ -15,7 +15,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             replaceTemplateValues();
+            if (navigator.userAgent.indexOf("Chrome") == -1 && window.self === window.top) {
+                fixFontNotChrome();
+            }
         });
+
+        function fixFontNotChrome() {
+            var delay = document.getElementById('delay');
+            delay.style.transform = 'translateY(-3px)';
+        }
 
         function replaceTemplateValues() {
             var time = document.getElementById('time');
@@ -46,7 +54,7 @@
             viaStations.innerHTML = urlParams.get('via_stations');
             viaStations.setAttribute('data-scroll-text', urlParams.get('via_stations'));
             operator.innerHTML = urlParams.get('operator');
-            
+
             if (urlParams.has('train_name') && urlParams.get('train_name') != '') {
                 train_name.innerHTML = urlParams.get('train_name');
             } else {
@@ -82,12 +90,12 @@
                 operator.innerHTML = " "
                 train_name.innerHTML = ""
                 delay.innerHTML = " "
-                
+
                 let labels = document.getElementsByClassName('label');
                 for (let i = 0; i < labels.length; i++) {
                     labels[i].style.color = 'transparent';
                 }
-    
+
                 return;
             }
         }
