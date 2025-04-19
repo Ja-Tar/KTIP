@@ -13,19 +13,9 @@
 
 <body>
     <script>
-        window.addEventListener('resize', scaleDisplay);
         document.addEventListener('DOMContentLoaded', function () {
-            scaleDisplay();
             replaceTemplateValues();
         });
-
-        function scaleDisplay() {
-            var display = document.getElementById('display');
-            var scaleFactor = window.innerWidth / 700;
-
-            display.style.transform = 'scale(' + scaleFactor + ')';
-            display.style.transformOrigin = 'top left';
-        }
 
         function replaceTemplateValues() {
             var time = document.getElementById('time');
@@ -140,8 +130,11 @@
                     textClone2.classList.add('clone');
                     element.parentElement.appendChild(textClone2);
 
+                    // change speed if in iframe
+                    const speed = window.self !== window.top ? 0.5 : 1;
+
                     const texts = gsap.utils.toArray(`#${elementId}`),
-                        loop = horizontalLoop(texts, { paused: false, repeat: -1, speed: 0.6 });
+                        loop = horizontalLoop(texts, { paused: false, repeat: -1, speed: speed });
                 }
             });
         }

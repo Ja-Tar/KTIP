@@ -1,7 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     color: white;
-    font-size: 16px;
+    font-size: calc(16 / 700 * 100vw); /* Set font size relative to viewport width (16px at 700vw) */
     margin: 0;
     padding: 0;
 }
@@ -13,14 +13,16 @@ body {
 }
 
 #display {
-    width: 700px;
-    height: fit-content;
+    height: 100%;
     background-color: #283c65;
+    display: flex;
+    flex-direction: column;
 }
 
 #time {
     font-weight: bolder;
     font-size: 440%;
+    max-height: 1.2em;
 }
 
 .row {
@@ -28,6 +30,8 @@ body {
     margin-top: 0px;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding-left: 0.3125em; /* 5px / 16px */
+    padding-right: 0.3125em; /* 5px / 16px */
 }
 
 ul {
@@ -45,18 +49,13 @@ li {
 
 #train_number_box {
     margin-right: 10%;
-    margin-top: 5px;
+    margin-top: 0.12em; 
 }
 
 #train_number {
     position: absolute;
     font-size: 190%;
     transform: translate(0%, -5%);
-}
-
-.row {
-    padding-left: 5px;
-    padding-right: 5px;
 }
 
 #destination {
@@ -85,11 +84,12 @@ li {
 }
 
 #row1 {
-    margin-bottom: 11px;
+    margin-bottom: 0.6875em; /* 11px / 16px */
 }
 
 #row2 {
-    margin-bottom: 14px;
+    margin-bottom: 0.875em; /* 14px / 16px */
+    flex-grow: 1;
 }
 
 #row3 {
@@ -97,13 +97,12 @@ li {
 }
 
 #row4 {
-    margin-bottom: 4px;
+    margin-bottom: 0.25em; /* 4px / 16px */
     justify-content: left;
 }
 
 #info_bar_box {
-    width: 100%;
-    height: 38px;
+    height: 2.375em; /* 38px / 16px */
     margin: 0;
     background-color: #2f353d;
 }
@@ -116,15 +115,15 @@ li {
 }
 
 #delay_box {
-    margin-top: 5px;
-    height: 50px;
+    margin-top: 0.3125em; /* 5px / 16px */
+    height: 3.125em; /* 50px / 16px */
 }
 
 #delay_background {
     background-color: red;
     display: flex;
     width: fit-content;
-    height: 42px;
+    height: 2.625em; /* 42px / 16px */
     transform: translate(0%, 15%);
 }
 
@@ -132,7 +131,7 @@ li {
     font-size: 290%;
     font-weight: bolder;
     transform: translate(0%, -14%);
-    padding-right: 10px;
+    padding-right: 0.625em; /* 10px / 16px */
 }
 
 /* Scroll text */
