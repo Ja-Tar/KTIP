@@ -108,8 +108,16 @@
                     textClone.classList.add('clone');
                     element.parentElement.appendChild(textClone);
 
+                    // change speed if in iframe
+                    let speed = 1;
+                    if (window.self !== window.top) {
+                        // calculate speed based on text length and parent width
+                        speed = parentWidth - textWidth
+                        speed = Math.max(speed, 0.2); // minimum speed
+                    }
+
                     const texts = gsap.utils.toArray(`#${elementId}`),
-                        loop = horizontalLoop(texts, { paused: false, repeat: -1, speed: 0.6 });
+                        loop = horizontalLoop(texts, { paused: false, repeat: -1, speed: speed });
                 }
             });
         }
