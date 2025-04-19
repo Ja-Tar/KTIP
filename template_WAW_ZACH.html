@@ -139,7 +139,12 @@
                     element.parentElement.appendChild(textClone2);
 
                     // change speed if in iframe
-                    const speed = window.self !== window.top ? 0.5 : 1;
+                    let speed = 1;
+                    if (window.self !== window.top) {
+                        // calculate speed based on text length and parent width
+                        speed = parentWidth - textWidth
+                        speed = Math.max(speed, 0.2); // minimum speed
+                    }
 
                     const texts = gsap.utils.toArray(`#${elementId}`),
                         loop = horizontalLoop(texts, { paused: false, repeat: -1, speed: speed });
