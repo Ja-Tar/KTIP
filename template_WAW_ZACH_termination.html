@@ -13,19 +13,9 @@
 
 <body>
     <script>
-        window.addEventListener('resize', scaleDisplay);
         document.addEventListener('DOMContentLoaded', function () {
-            scaleDisplay();
             replaceTemplateValues();
         });
-
-        function scaleDisplay() {
-            var display = document.getElementById('display');
-            var scaleFactor = window.innerWidth / 700;
-
-            display.style.transform = 'scale(' + scaleFactor + ')';
-            display.style.transformOrigin = 'top left';
-        }
 
         function replaceTemplateValues() {
             var time_of_arrival = document.getElementById('time_of_arrival');
@@ -69,7 +59,7 @@
                     infoBarBox.classList.add('rainbow');
                 }
             } else {
-                infoBar.parentElement.style.display = "none"
+                infoBar.parentElement.style.display = "none";
                 infoBarBox.style.backgroundColor = "maroon";
                 terminatesBox.classList.add('no_info_bar');
             }
