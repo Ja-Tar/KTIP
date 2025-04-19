@@ -1,7 +1,7 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     color: white;
-    font-size: 16px;
+    font-size: calc(16 / 700 * 100vw); /* Set font size relative to viewport width (16px at 700vw) */
     margin: 0;
     padding: 0;
 }
@@ -13,29 +13,30 @@ body {
 }
 
 #display {
-    width: 700px;
-    height: fit-content;
+    height: 100%; /* Change height to fill display_box */
     background-color: #283c65;
+    display: flex; /* Add */
+    flex-direction: column; /* Add */
 }
 
 #time_of_arrival {
     font-weight: bolder;
     font-size: 300%;
     transform: translate(0%, -5%);
-    height: 100%;
 }
 
 #train_number_box {
-    margin-top: 5px;
+    margin-top: 0.3125em; /* 5px / 16px */
     margin-right: 10%;
 }
 
 .row {
     display: flex;
     margin-top: 0px;
-    margin-bottom: 10px;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding-left: 0.3125em; /* 5px / 16px */
+    padding-right: 0.3125em; /* 5px / 16px */
 }
 
 ul {
@@ -52,19 +53,13 @@ li {
 }
 
 #time_of_arrival_box {
-    margin-top: 5px;
-    height: 65px;
+    margin-top: 0.3125em; /* 5px / 16px */
 }
 
 #train_number {
     position: absolute;
     font-size: 190%;
     transform: translate(-2%, -5%);
-}
-
-.row {
-    padding-left: 5px;
-    padding-right: 5px;
 }
 
 #starting_station {
@@ -88,15 +83,14 @@ li {
 }
 
 #delay_box {
-    margin-top: 5px;
-    height: 65px;
+    margin-top: 0.3125em; /* 5px / 16px */
 }
 
 #delay_background {
     background-color: red;
     display: flex;
     width: fit-content;
-    height: 38px;
+    height: 2.375em; /* 38px / 16px */
     transform: translate(0%, 15%);
 }
 
@@ -104,17 +98,20 @@ li {
     font-size: 220%;
     font-weight: 700;
     transform: translate(0%, -4%);
-    padding-right: 8px;
+    padding-right: 0.5em; /* 8px / 16px */
 }
 
 #row2 {
-    height: 75px;
     margin-bottom: 0px;
 }
 
 #row3 {
     background-color: maroon;
-    height: 160px;
+    flex-grow: 1; /* Add to fill remaining space */
+    display: flex; /* Add to allow centering terminates_box */
+    align-items: center; /* Add to vertically center terminates_box */
+    justify-content: center; /* Add to horizontally center terminates_box */
+    margin-bottom: 0; /* Ensure no bottom margin */
 }
 
 #terminates_box {
@@ -123,7 +120,6 @@ li {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    transform: translateY(-1%);
 }
 
 #terminates_pl {
@@ -136,9 +132,10 @@ li {
 
 #info_bar_box {
     width: 100%;
-    height: 38px;
+    height: 2.375em; /* 38px / 16px */
     margin: 0;
     background-color: #2f353d;
+    flex-shrink: 0; /* Prevent info bar from shrinking */
 }
 
 #info_bar {

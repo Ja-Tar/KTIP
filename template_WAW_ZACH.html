@@ -13,18 +13,16 @@
 
 <body>
     <script>
-        window.addEventListener('resize', scaleDisplay);
         document.addEventListener('DOMContentLoaded', function () {
-            scaleDisplay();
             replaceTemplateValues();
+            if (navigator.userAgent.indexOf("Chrome") == -1 && window.self === window.top) {
+                fixFontNotChrome();
+            }
         });
 
-        function scaleDisplay() {
-            var display = document.getElementById('display');
-            var scaleFactor = window.innerWidth / 700;
-
-            display.style.transform = 'scale(' + scaleFactor + ')';
-            display.style.transformOrigin = 'top left';
+        function fixFontNotChrome() {
+            var delay = document.getElementById('delay');
+            delay.style.transform = 'translateY(-3px)';
         }
 
         function replaceTemplateValues() {
@@ -56,7 +54,7 @@
             viaStations.innerHTML = urlParams.get('via_stations');
             viaStations.setAttribute('data-scroll-text', urlParams.get('via_stations'));
             operator.innerHTML = urlParams.get('operator');
-            
+
             if (urlParams.has('train_name') && urlParams.get('train_name') != '') {
                 train_name.innerHTML = urlParams.get('train_name');
             } else {
@@ -92,12 +90,12 @@
                 operator.innerHTML = " "
                 train_name.innerHTML = ""
                 delay.innerHTML = " "
-                
+
                 let labels = document.getElementsByClassName('label');
                 for (let i = 0; i < labels.length; i++) {
                     labels[i].style.color = 'transparent';
                 }
-    
+
                 return;
             }
         }
@@ -140,8 +138,11 @@
                     textClone2.classList.add('clone');
                     element.parentElement.appendChild(textClone2);
 
+                    // change speed if in iframe
+                    const speed = window.self !== window.top ? 0.5 : 1;
+
                     const texts = gsap.utils.toArray(`#${elementId}`),
-                        loop = horizontalLoop(texts, { paused: false, repeat: -1, speed: 0.6 });
+                        loop = horizontalLoop(texts, { paused: false, repeat: -1, speed: speed });
                 }
             });
         }

@@ -90,6 +90,8 @@ function generateFromTemplate() {
         let input_info_bar = document.getElementById("input_info_bar").value;
         let input_info_bar_more = document.getElementById("input_info_bar_more").value;
         let input_delay = document.getElementById("input_delay").value;
+        let input_train_name = document.getElementById("input_train_name").value; // NEW: train name
+        let input_name_type = document.getElementById("input_name_type").value; // NEW: train name type
         let input_colorbar = document.getElementById("input_colorbar").value
         let input_colorfont = document.getElementById("input_colorfont").value
         let input_delay_type = document.getElementById("delay_input_type").value;
@@ -99,11 +101,31 @@ function generateFromTemplate() {
             return;
         }
 
-        if (input_info_bar_more !== "") {
-            let temp_delay = input_info_bar.replaceAll("<min>", input_delay);
-            input_info_bar = `${temp_delay}  ***  ${input_info_bar_more}`;
-        } else {
-            input_info_bar = input_info_bar.replaceAll("<min>", input_delay);
+        let temp_info_bar = input_info_bar.replaceAll("<min>", input_delay);
+
+        if (input_name_type === "bar" && input_delay_type === "bar") {
+            if (input_info_bar_more !== "") {
+                input_info_bar = `${temp_info_bar}${input_train_name}  ***  ${input_info_bar_more}`; 
+                // w temp_info_bar jest już " *** " pomiędzy opóźnieniem a nazwą pociągu
+            } else {
+                input_info_bar = `${temp_info_bar}  ***  ${input_train_name}`;
+            }
+            input_delay = "";
+            input_train_name = "";
+        } else if (input_delay_type === "bar") {
+            if (input_info_bar_more !== "") {
+                input_info_bar = `${temp_info_bar}  ***  ${input_info_bar_more}`;
+            } else {
+                input_info_bar = temp_info_bar;
+            }
+            input_delay = "";
+        } else if (input_name_type === "bar") {
+            if (input_info_bar_more !== "") {
+                input_info_bar = `${input_train_name}  ***  ${input_info_bar_more}`;
+            } else {
+                input_info_bar = input_train_name;
+            }
+            input_train_name = "";
         }
 
         if (input_delay_type === "bar") {
