@@ -85,17 +85,14 @@ li {
     margin-left: 10%;
 }
 
-#row1 {
-    margin-bottom: 0.6875em; /* 11px / 16px */
-}
-
 #row2 {
-    margin-bottom: 0.875em; /* 14px / 16px */
     flex-grow: 1;
 }
 
+#row1,
+#row2,
 #row3 {
-    margin-bottom: 0px;
+    margin-bottom: 0em;
 }
 
 #row4 {

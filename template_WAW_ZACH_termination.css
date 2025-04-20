@@ -22,11 +22,12 @@ body {
 #time_of_arrival {
     font-weight: bolder;
     font-size: 300%;
-    transform: translate(0%, -5%);
+    line-height: 1;
+    margin-bottom: 0.05em; /* 5px / 16px */
 }
 
 #train_number_box {
-    margin-top: 0.3125em; /* 5px / 16px */
+    margin-top: 0.2em; /* 5px / 16px */
     margin-right: 10%;
 }
 
@@ -53,7 +54,7 @@ li {
 }
 
 #time_of_arrival_box {
-    margin-top: 0.3125em; /* 5px / 16px */
+    margin-top: 0.2em; /* 5px / 16px */
 }
 
 #train_number {
@@ -67,7 +68,9 @@ li {
     white-space: nowrap;
     overflow: hidden;
     font-weight: bolder;
-    transform: translate(0%, -0%);
+    transform: translate(0%, -5%);
+    line-height: 1.1;
+    margin-bottom: 0.05em;
 }
 
 #operator {
