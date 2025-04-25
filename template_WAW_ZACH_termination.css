@@ -101,7 +101,7 @@ li {
     font-size: 220%;
     font-weight: 700;
     transform: translate(0%, -4%);
-    padding-right: 0.5em; /* 8px / 16px */
+    padding-right: 0.28em;
 }
 
 #row2 {

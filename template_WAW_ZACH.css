@@ -129,7 +129,7 @@ li {
 #delay {
     font-size: 290%;
     font-weight: bolder;
-    padding-right: 0.2em; /* 10px / 16px */
+    padding-right: 0.28em;
 }
 
 /* Scroll text */
